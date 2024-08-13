@@ -1,4 +1,4 @@
-# polarized-f-with-exist
+# dependent inference 
 
 ## Dependencies
 ### Opam 4.13
