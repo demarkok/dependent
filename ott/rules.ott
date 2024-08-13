@@ -1,0 +1,84 @@
+grammar
+  formula :: 'formula_' ::=
+    | judgement                              ::   :: judgement
+    % | judgement principal                    ::   :: judgement_principal {{ tex [[judgement]] \text{ principal} }}
+    | formula1 .. formulan                   ::   :: dots
+    % | mu : varset1 ↔ varset2                 ::   :: moving_decl
+    % | mu is bijective                        ::   :: moving_bij
+    % | us1 ∊ us2                              ::   :: us_in
+    | x : A ∊ Γ                              ::   :: in_ctxt
+    | x : aA ∊ aΓ                             ::   :: a_in_ctxt
+    % | UC1 ⊆ UC2                              ::   :: UC_subset
+    % | UC1 = UC2                              ::   :: UC_eq
+    % | SC1 ⊆ SC2                              ::   :: SC_subset
+    % | scE ∊ SC                                ::   :: scE_in_SC
+    % | ucE ∊ UC                                ::   :: ucE_in_UC
+    % | x : fT ∊ fΦ                            ::   :: fx_in_ctxt
+    % | a ∊ fΓ                                 ::   :: a_in_ctxt
+    % | fA = fB                                ::   :: fA_eq_fB
+    % | us1 ⊆ us2                              ::   :: unif_subset
+    % | varset1 ⊆ varset2                      ::   :: varset_subset
+    % | varset1 ⊆ varset2 ⊆ varset3            ::   :: varset_subset_bounds
+    % | varset1 = varset2                      ::   :: varset_eq
+    % | varset are fresh                       ::   :: fresh
+                                                    %  {{ tex [[ varset ]] ~ \ottkw{are} ~\ottkw{fresh} }}
+    % | x ∊ T                                  ::   :: x_in_T {{ com lookup $[[ x ]]$ in context $[[ T ]]$ }}
+    % | SI = SJ                                ::   :: index_set_eq
+    % | SI ⊆ SJ                                ::   :: index_set_subset
+    % | na ∉ varset                            ::   :: na_notin_set
+    % | pa ∉ varset                            ::   :: pa_notin_set
+    % | na ∊ varset                            ::   :: na_in_set
+    % | pa ∊ varset                            ::   :: pa_in_set
+    % | pua ∊ varset                           ::   :: pua_in_set
+    % | nua ∊ varset                           ::   :: nua_in_set
+    % | nua ∊ Θ                                ::   :: nua_in_ctxt
+    % | pua ∊ Θ                                ::   :: pua_in_ctxt
+    % | nua ∉ varset                           ::   :: nua_notin_set
+    % | pua ∉ varset                           ::   :: pua_notin_set
+    % | nua ∉ Θ                                ::   :: nua_notin_ctxt
+    % | pua ∉ Θ                                ::   :: pua_notin_ctxt
+    % | nua ∊ Ξ                                ::   :: nua_in_Xi
+    % | nua ∉ Ξ                                ::   :: nua_notin_Xi
+    % | pua ∊ Ξ                                ::   :: pua_in_Xi
+    % | pua ∉ Ξ                                ::   :: pua_notin_Xi
+    % | otherwise                              ::   :: otherwise {{ tex \text{if other rules are not applicable} }}
+    % | ordVars1 = ordVars2                    ::   :: ordVars_eq
+    % | ucE1 = ucE2                            ::   :: ucE_eq
+    % | scE1 = scE2                            ::   :: scE_eq
+    % | uσ1 = uσ2                              ::   :: us_eq
+    % | uN = uM                                ::   :: uN_eq_uM
+    % | iN = na ∊ varset                       ::  :: uN_eq_na
+    % | Θ ⊆ Θ'                                 ::   :: theta_subset
+    % | args1 = args2                          ::   :: args_eq
+    % | xs ⊆ T                                 ::   :: xs_in_T
+    % | let T1 = T2                            ::   :: let_T
+    % | let xs = vars                          ::   :: let_vars
+    % | vars ∩ T = ∅                             ::   :: xs_T_disj
+    % | vars1 ∩ vars2 = ∅                      ::   :: xs_disj
+    % | UV ( t ) = ua1 [ vars1 ] ,.., uan [ varsn ] ::   :: uvars_in_t
+    % | ux : arn ∊ T                           ::   :: ux_in_T {{ com lookupof $[[ ux ]]$ in context $[[ T ]]$ }}
+    % | ux : arn = t ∊ T                       ::   :: ux_inst_in_T {{ com lookup type of $[[ ux ]]$  instantiation in context $[[ T ]]$ }}
+    | A ≠ B                                    ::   :: Tneq
+    % | P ≠ Q                                    ::   :: Nneq
+    % | iN ≠ iM                                  ::   :: iNneq
+    % | iP ≠ iQ                                  ::   :: iPneq
+    % | uP ≠ uQ                                  ::   :: uPneq
+    % | uN ≠ uM                                  ::   :: uNneq
+    % | args1 ≠ args2                            ::   :: args_neq
+    % | pas1 ≠ pas2                              ::   :: pas_neq
+    % | | nas | + | nbs | > 0                    ::   :: nas_nbs_gt0
+    % | | pas | + | pbs | > 0                    ::   :: pas_pbs_gt0
+    % | ft1 = ft2                                ::   :: ft_eq
+    % | uP ≤ iQ                                  ::   :: uPleq
+    % | uP ≥ iQ                                  ::   :: uPgeq
+    % | iP ≥ iQ                                  ::   :: iPgeq
+    % | uN ≤ iM                                  ::   :: uNleq
+    % | iN ≤ iM                                  ::   :: iNleq
+    % | uN ≥ iM                                  ::   :: uNgeq
+    % | ft : fT                                  ::   :: fTyping
+    % | c : iM                                   ::   :: cTyping
+    % | xs = vars                              ::   :: xs_assignment
+    % | arity f = [ arn1 ,.., arnn ]           ::   :: arity
+    % | judgement etc                          ::   :: etc  {{ tex [[ judgement ]]... }}
+    % | etc                                    ::   :: etc  {{ tex \cdots }}
+    % | ∀ i ∊ nat1 .. natn . judgment          ::   :: dots

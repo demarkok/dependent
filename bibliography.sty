@@ -1,0 +1,176 @@
+%% Bibliography
+% Use style=ACM-Reference-Format for numeric citations
+% Hack to try to make acmart work with biblatex:
+% https://tex.stackexchange.com/questions/37076/is-it-possible-to-load-biblatex-with-a-class-that-has-already-loaded-natbib
+\let\citename\relax
+\usepackage[natbib=true, abbreviate=true, dateabbrev=true, isbn=false, doi=true, urldate=comp, url=true, maxbibnames=9, maxcitenames=1, uniquelist=false, backref=false, dashed=false, backend=biber, style=authoryear-comp, language=american]{biblatex}
+\addbibresource{../biblio.bib}
+\renewcommand{\bibfont}{\Small}
+
+%% First name, then last name
+\DeclareNameAlias{sortname}{first-last}
+
+%% print URL (and urldate) only if DOI is not present
+\DeclareSourcemap{
+ \maps[datatype=bibtex]{
+    \map{
+       \step[fieldsource=doi,final]
+       \step[fieldset=url,null]
+       \step[fieldset=urldate,null]
+       }
+     }
+}
+
+%% Michalis: The commands below are *necessary* for clickable links
+%% in biblatex's default author-year format
+%%
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{%% [
+      #1%% ]
+  }}
+
+\DeclareFieldFormat{textcitehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{%
+    #1%
+    \ifbool{cbx:parens}
+      {\bibcloseparen\global\boolfalse{cbx:parens}}
+      {}}}
+
+\savebibmacro{cite}
+\savebibmacro{textcite}
+
+\renewbibmacro*{cite}{%
+  \printtext[citehyperref]{%
+    \restorebibmacro{cite}%
+    \usebibmacro{cite}}}
+
+\renewbibmacro*{textcite}{%
+  \ifboolexpr{
+    ( not test {\iffieldundef{prenote}} and
+      test {\ifnumequal{\value{citecount}}{1}} )
+    or
+    ( not test {\iffieldundef{postnote}} and
+      test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+  }
+    {\DeclareFieldAlias{textcitehyperref}{noformat}}
+    {}%
+  \printtext[textcitehyperref]{%
+    \restorebibmacro{textcite}%
+    \usebibmacro{textcite}}}
+
+%% Michalis: The commands below redefine the parentheses commands to use
+%% brackets instead of parentheses in author-year format
+%%
+\makeatletter
+\newrobustcmd*{\parentexttrack}[1]{%
+  \begingroup
+  \blx@blxinit
+  \blx@setsfcodes
+  \blx@bibopenparen#1\blx@bibcloseparen
+  \endgroup}
+
+\AtEveryCite{%
+  \let\parentext=\parentexttrack%
+  \let\bibopenparen=\bibopenbracket%
+  \let\bibcloseparen=\bibclosebracket}
+\makeatother
+
+%% Michalis: Even more trickery to print only one author in \textcite
+%%
+\makeatletter
+\DeclareIndexNameFormat{cbx@chr@getfirstauthorhash}{%
+  \ifnumequal{\value{listcount}}{1}
+    {\savefield{hash}{\cbx@thishash}%
+     \ifmorenames
+       {\gappto{\cbx@thishash}{@alone}}
+       {\gappto{\cbx@thishash}{@etal}}}
+    {}}
+
+\newbibmacro*{shorttextcite}{%
+  \indexnames[cbx@chr@getfirstauthorhash][1-1]{labelname}%
+  \ifdefequal{\cbx@thishash}{\cbx@lasthash}
+    {\iffieldundef{shorthand}
+       {\ifthenelse{\iffieldequals{labelyear}{\cbx@lastyear}\AND
+                    \(\value{multicitecount}=0\OR\iffieldundef{postnote}\)}
+          {\setunit{\addcomma}%
+           \usebibmacro{cite:extradate}}
+          {\setunit{\compcitedelim}%
+           \usebibmacro{cite:labeldate+extradate}%
+           \savefield{labelyear}{\cbx@lastyear}}}
+       {\setunit{\compcitedelim}%
+        \usebibmacro{cite:shorthand}%
+        \global\undef\cbx@lastyear}}
+    {\ifnameundef{labelname}
+       {\iffieldundef{shorthand}
+          {\usebibmacro{cite:label}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nonameyeardelim}\bibopenparen}%
+           \ifnumequal{\value{citecount}}{1}
+             {\usebibmacro{prenote}}
+             {}%
+           \usebibmacro{cite:labeldate+extradate}}
+          {\usebibmacro{cite:shorthand}}}
+       {\printnames[labelname][1-1]{labelname}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nameyeardelim}\bibopenparen}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \iffieldundef{shorthand}
+          {\iffieldundef{labelyear}
+             {\usebibmacro{cite:label}}
+             {\usebibmacro{cite:labeldate+extradate}}%
+           \savefield{labelyear}{\cbx@lastyear}}
+          {\usebibmacro{cite:shorthand}%
+           \global\undef\cbx@lastyear}}%
+     \stepcounter{textcitecount}%
+     \global\let\cbx@lasthash\cbx@thishash}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\bibcloseparen\global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
+
+\DeclareCiteCommand{\cbx@shorttextcite}
+  {\usebibmacro{cite:init}%
+   \global\undef\cbx@thishash}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{shorttextcite}}
+  {}
+  {\usebibmacro{textcite:postnote}}
+
+\DeclareCiteCommand{\shorttextcite}[\cbx@textcite@init\cbx@shorttextcite]
+  {\gdef\cbx@savedkeys{}%
+   \citetrackerfalse%
+   \pagetrackerfalse%
+   \DeferNextCitekeyHook%
+   \usebibmacro{cite:init}%
+   \global\undef\cbx@thishash}
+  {\ifthenelse{\iffirstcitekey\AND\value{multicitetotal}>0}
+     {\protected@xappto\cbx@savedcites{()(\thefield{multipostnote})}%
+      \global\clearfield{multipostnote}}
+     {}%
+   \xappto\cbx@savedkeys{\thefield{entrykey},}%
+   \indexnames[cbx@chr@getfirstauthorhash][1-1]{labelname}%
+   \ifdefequal{\cbx@thishash}{\cbx@lasthash}
+     {}
+     {\stepcounter{textcitetotal}%
+      \global\let\cbx@lasthash\cbx@thishash}}
+  {}
+  {\protected@xappto\cbx@savedcites{%
+     [\thefield{prenote}][\thefield{postnote}]{\cbx@savedkeys}}}
+\makeatother
+
+%% Michalis: Do not print commas after "et al."
+\renewcommand{\nameyeardelim}{\space}
+
+%% Michalis: Make shorttextcite the default
+\renewcommand{\textcite}{\shorttextcite}
+
+%% Michalis: Make parencite the default
+\renewcommand{\cite}{\parencite}

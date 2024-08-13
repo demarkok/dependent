@@ -1,0 +1,109 @@
+% vim: ft=tex
+\PassOptionsToPackage{prologue,dvipsnames}{xcolor}
+\documentclass[acmsmall,natbib=false,review,anonymous]{acmart}
+\input{../prelude.tex}
+
+\newcommand{\ottDir}{../ott/_gen}
+\newcommand{\genDir}{_gen}
+\input{\ottDir/defs.tex}
+\input{\ottDir/renew-ott.tex}
+
+\begin{document}
+
+\section{Syntax}
+
+  The difference between the surface and core syntax is that the surface spines
+  can have underscores.  Notice that all the types are \emph{core} types. 
+
+  \begin{supertabular}{rll p{0.8\textwidth}}
+    % \paragraph*{Types}
+    (Core) Types & \ottAInline\\
+    \\
+    (Core) Contexts & \ottGInline\\
+    % \paragraph*{Terms}
+    Core Terms & \otteInline\\
+    \\
+    Core Spines & \ottsInline\\
+    \\
+    Surface Terms & \ottseInline\\
+    \\
+    Surface Spines & \ottssInline\\
+    \\
+  \end{supertabular}
+
+
+\newpage
+
+\section{Core}
+    \ottdefnCoreCheckLabeled{}
+    \ottdefnCoreInfLabeled{}
+    \ottdefnCoreSpineAppLabeled{}
+    \ottdefnCoreTypeConvLabeled{}
+    \ottdefnCoreCheckConvLabeled{}
+    \ottdefnCoreSpineConvLabeled{}
+    \ottdefnCoreWfLabeled{}
+
+\newpage
+
+\section{Surface to Core}
+    \ottdefnTypCheckLabeled{}
+    \ottdefnTypInfLabeled{}
+    \ottdefnTypSpineAppLabeled{}
+  
+\newpage
+
+\section{Algorithmic Syntax}
+
+  \begin{supertabular}{rll p{0.8\textwidth}}
+    % \paragraph*{Types}
+    Alg Types & \ottaAInline\\
+    \\
+    Alg Contexts & \ottaGInline\\
+    % \paragraph*{Terms}
+    Alg Core Terms & \ottaeInline\\
+    \\
+    Alg Core Spines & \ottasInline\\
+    \\
+    Alg Surface Terms & \ottsaeInline\\
+    \\
+    Alg Surface Spines & \ottsasInline\\
+    \\
+  \end{supertabular}
+
+
+\section{Surface to Algo}
+    \ottdefnAlgCheckLabeled{}
+    \ottdefnAlgInfLabeled{}
+    \ottdefnAlgSpineAppLabeled{}
+    \ottdefnAlgWfLabeled{}
+
+  % \subsection{Equational theory}
+  %   % \ottdefnTypInfConvLabeled{}
+  %   \ottdefnTypSpineConvLabeled{}
+
+  % \subsection{Typing}
+  %   \ottdefnTypInfLabeled{}
+  %   % \ottdefnTypSubLabeled{}
+  %   \ottdefnTypSpineAppLabeled{}
+  %   % \ottdefnTypInstLabeled{}
+
+
+  % \ottall
+
+  % \ottdefns
+
+% \begin{multicols}{2}
+% \ottdefnDeXXredV{}
+% \columnbreak
+
+% \ottdefnAlXXredV{}
+% \end{multicols}
+
+% \begin{multicols}{2}
+%   \ottdefnDeXXredC{}
+%   \columnbreak
+
+%   \ottdefnAlXXredC{}
+% \end{multicols}
+
+\end{document}

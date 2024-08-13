@@ -1,0 +1,195 @@
+\usepackage[dvipsnames]{xcolor}
+\usepackage{scalerel}
+
+
+\usepackage{braket}
+% \usepackage{hyperref}
+\usepackage{mathpartir}
+
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{supertabular}
+\usepackage[inline]{enumitem}
+\usepackage{cleveref}
+\usepackage{proof}
+\usepackage{mathtools}
+
+% Show the frame 
+% \usepackage{showframe}
+
+\usepackage{newtxmath}
+% \usepackage{mathabx}
+
+
+\usepackage{stackengine}
+
+
+
+\usepackage{todonotes}
+
+\usepackage{enumitem}
+\usepackage{xparse}
+
+\usepackage{../casenum}
+% \usepackage{../quiver}
+
+\usepackage{listings}
+\usepackage{xspace}
+\usepackage{subcaption}
+
+\usepackage{etoolbox}
+
+
+% \usepackage{tikz}
+\usetikzlibrary{shapes,arrows,arrows.meta,positioning}
+\usetikzlibrary{shapes.multipart}
+
+% ⫤
+\usepackage{graphicx}
+\makeatletter
+\providecommand*{\Dashv}{%
+  \mathrel{%
+    \mathpalette\@Dashv\vDash
+  }%
+}
+\newcommand*{\@Dashv}[2]{%
+  \reflectbox{$\m@th#1#2$}%
+}
+\makeatother
+
+
+
+
+\setlength{\columnsep}{1cm}
+
+\newcommand{\niton}{\not\owns}
+
+\newcommand{\ilyam}[1]{{\color{red} \texttt{Ilya:  #1}}}
+\newcommand{\nk}[1]{{\color{purple} \texttt{Neel:  #1}}}
+\newcommand{\meven}[1]{{\color{blue} \texttt{from Meven: "  #1}}}
+
+\usepackage{thmtools}
+\usepackage{thm-restate}
+
+% https://tex.stackexchange.com/questions/553406/the-label-command-defined-by-cleveref-fails-in-a-thm-restate-environment
+\usepackage{xpatch}
+
+% \makeatletter
+% \@ifpackageloaded{cleveref}{
+%   \xpatchcmd\thmt@restatable
+%     {\let\label=\@gobble}
+%     {\let\label=\gobbled@cleveref@label}
+%     {}{}
+  
+%   \newcommand\gobbled@cleveref@label[2][]{}
+% }{}
+
+
+\declaretheorem[name=Theorem,refname={theorem,theorems},Refname={Theorem,Theorems}]{theoremRes}
+
+\declaretheorem[name=Corollary,refname={corollary,corollaries},Refname={Corollary,Corollaries}]{corollaryRes}
+
+\declaretheorem[name=Proposition,refname={proposition,propositions},Refname={Proposition,Propositions}]{propositionRes}
+
+\declaretheorem[name=Property,refname={property,properties},Refname={Property,Properties}]{propertyRes}
+
+\declaretheorem[name=Lemma,refname={lemma,lemmas},Refname={Lemma,Lemmas}]{lemmaRes}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{property}{Property}
+
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{notation*}{Notation}
+\newtheorem*{theorempreview}{Theorem}
+\newtheorem{observation}{Observation}
+\newtheorem*{assertion*}{Assertion}
+
+\makeatletter
+\newcommand{\defeq}{\mathrel{\aban@defeq}}
+\newcommand{\aban@defeq}{%
+  \vbox{\offinterlineskip\check@mathfonts
+    \ialign{\hfil##\hfil\cr
+      \fontsize{\ssf@size}{\z@}\normalfont def\cr
+      \noalign{\kern1\p@}
+      $\m@th=$\cr
+      \noalign{\kern-.5\fontdimen22\textfont2}
+    }%
+  }%
+}
+\makeatother
+
+\newcommand{\UB}[0]{\mathsf{UB}}
+\newcommand{\NFUB}[0]{\mathsf{NFUB}}
+
+\newcommand{\depth}[1]{\ensuremath{\mathsf{depth}(#1)}}
+\newcommand{\size}[1]{\ensuremath{\mathsf{size}(#1)}}
+
+\newcommand{\ruleref}[1]{\nameref{#1}}
+
+\newcommand{\fexists}{F$^\pm_\exists$\xspace} 
+\newcommand{\etc}{\text{e.t.c.}}
+
+
+
+\newcommand{\ie}{\text{i.e.,} }
+\newcommand{\eg}{\text{e.g.,} }
+\newcommand{\wrt}{w.r.t.\xspace}
+\newcommand{\stt}{s.t.\xspace}
+\newcommand{\aka}{also known as\xspace}
+\newcommand{\resp}{resp.\xspace}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newcommand{\CBPV}{\text{Call-By-Push-Value}\xspace}
+
+\newcommand{\coq}{\texttt{Coq}\xspace}
+\newcommand{\agda}{\texttt{Agda}\xspace}
+
+\newcommand{\systemf}{\text{System F}\xspace}
+
+\newcommand{\pack}{\texttt{pack}\xspace}
+\newcommand{\unpack}{\texttt{unpack}\xspace} 
+
+% https://tex.stackexchange.com/questions/85033/colored-symbols/85035#85035
+\providecommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+  \color#1{#2}#3%
+  \endgroup
+}
+
+\definecolor{positive}{RGB}{200, 50, 50}
+\definecolor{negative}{RGB}{50, 50, 200}
+
+
+\setlength\multicolsep{0pt}
+
+
+\newcommand{\pureSize}[1]{\ensuremath{\mathsf{pure\_size}(#1)}}
+\newcommand{\metric}[1]{\ensuremath{\mathsf{metric}(#1)}}
+\newcommand{\eqNodes}[1]{\ensuremath{\mathsf{eq\_nodes}(#1)}}
+\newcommand{\npq}[1]{\ensuremath{\mathsf{npq}(#1)}}
+
+
+\newcommand{\downharpoonlefttight}{\mathord{\downharpoonright}}
+\newcommand{\downharpoonrighttight}{\mathord{\downharpoonleft}}
+\newcommand{\upharpoonlefttight}{\mathord{\upharpoonright}}
+\newcommand{\upharpoonrighttight}{\mathord{\upharpoonleft}}
+
+% \renewcommand{\paragraph}[1]{\paragraph*{#1}}
+% \renewcommand{\paragraph}[1]{\subparagraph{#1}}

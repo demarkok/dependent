@@ -1,0 +1,219 @@
+embed {{ tex-preamble
+
+\newcommand{\sur}[1]{\underline{#1} }
+\newcommand{\alg}[1]{\widehat{#1} }
+\newcommand{\suralg}[1]{\widehat{\underline{#1} } }
+
+}}
+
+
+metavar a {{ tex \alpha }}, b {{ tex \beta }}, g {{ tex \gamma }}, d {{tex \delta}}, 
+ α {{ tex \alpha }}, β {{ tex \beta }},
+ γ {{ tex \gamma }},  δ {{ tex \delta }} ::= {{ com type variables }}
+
+indexvar n , m, i, j, k ::= {{ com index variables }}
+
+metavar x, y   ::= {{ com term variable }}
+
+metavar ax, ay   ::= {{ com term algorithmic variable }}
+
+grammar 
+
+% % Source language
+% sA {{ tex A }}, sB {{ tex B }}, sC {{ tex C }}, sD {{ tex D }}  :: 'sA_' ::=
+%   | Unit           ::   :: UnitT {{ tex 1 }}
+%   | Π x : sA . sB  ::   :: Pi    (+ bind x in sB +) {{ tex \Pi [[x]]:[[sA]] . \, [[sB]] }}
+%   | ∀ x : sA . sB  ::   :: Forall (+ bind x in B +) {{ tex \forall [[x]]:[[sA]] . \, [[sB]] }}
+%   | se1 = se2 : sA ::   :: Eq    {{ tex [[se1]] = [[se2]] : [[sA]] }}
+%   | ( sA )         :: S :: Paren 
+
+se {{ tex \sur{e} }}, sp {{ tex \sur{p} }} :: 'se_' ::=
+  | x             ::   :: Var    % {{ com variable }}
+  | <>            ::   :: Unit   % {{ com unit }}
+  | λ x : A . se ::   :: Lam    % {{ com lambda abstraction }}
+  | λ̂ x : A . se ::   :: PLam   % {{ com implicit lambda abstraction }}
+  | se ( ss )     ::   :: App    % {{ com application }}
+  | refl se      ::   :: Refl   % {{ com reflexivity }}
+  | subst ( sp : se1 = se2 : A , x . B , se ) ::   :: Subst 
+  | ( se )       :: S :: Paren  % {{ com parentheses }}
+
+ss {{ tex \vv{ \sur{ss} } }} :: 'ss_' ::= 
+    | ·                     ::   :: Empty 
+    | se                    ::   :: Single
+    | { se }                ::   :: ImpArg
+    | { _ }                 ::   :: ImpArgHole {{ tex \{\_\} }}
+    | ss1 , ss2             ::   :: Concat   {{ com concatenate }}
+
+
+% Target language
+
+A {{ tex A }}, B {{ tex B }}, C {{ tex C }}, D {{ tex D }}  :: 'A_' ::=
+  | Unit       ::   :: UnitT {{ tex 1 }}
+  | Π x : A . B ::   :: Pi    (+ bind x in B +) {{ tex \Pi [[x]]:[[A]] . \, [[B]] }}
+  | ∀ x : A . B ::   :: Forall (+ bind x in B +) {{ tex \forall [[x]]:[[A]] . \, [[B]] }}
+  | e1 = e2 : A ::   :: Eq    {{ tex [[e1]] = [[e2]] : [[A]] }}
+  | ( A )       :: S :: Paren 
+
+e {{ tex e }}, p {{ tex p }} :: 'e_' ::=
+  | x           ::   :: Var    % {{ com variable }}
+  | <>          ::   :: Unit   % {{ com unit }}
+  | λ x : A . e ::   :: Lam    % {{ com lambda abstraction }}
+  | λ̂ x : A . e ::   :: PLam   % {{ com implicit lambda abstraction }}
+  | e ( s )     ::   :: App    % {{ com application }}
+  | refl e      ::   :: Refl   % {{ com reflexivity }}
+  | subst ( p : e1 = e2 : A , x . B , e ) ::   :: Subst    % {{ com subst eliminator }}
+  | ( e )       :: S :: Paren  % {{ com parentheses }}
+
+s {{ tex \vv{ s } }} :: 's_' ::= 
+    | ·                     ::   :: Empty 
+    | e                     ::   :: Single
+    | { e }                 ::   :: ImpArg
+    | s1 , s2               ::   :: Concat   {{ com concatenate }}
+
+G {{ tex \Gamma }}, Γ {{ tex \Gamma }} :: 'G_' ::= 
+  | ·                   ::   :: Empty    
+  | x : A               ::   :: Single
+  | Γ1 , Γ2             ::   :: Concat   {{ com concatenate }}
+
+
+% Algorithmic source language
+
+sae {{ tex \suralg{e} }}, sap {{ tex \suralg{p} }} :: 'sae_' ::=
+  | x           ::   :: Var    % {{ com variable }}
+  | ax          ::   :: AVar   {{ tex \widehat{x} }} % {{ com algorithmic variable }}
+  | <>          ::   :: Unit   % {{ com unit }}
+  | λ x : aA . sae ::   :: Lam    % {{ com lambda abstraction }}
+  | λ̂ x : aA . sae ::   :: PLam   % {{ com implicit lambda abstraction }}
+  | sae ( sas )     ::   :: App    % {{ com application }}
+  | refl sae      ::   :: Refl   % {{ com reflexivity }}
+  | subst ( p : sae1 = sae2 : aA , x . aB , sae ) ::   :: Subst    % {{ com subst eliminator }}
+  | ( sae )       :: S :: Paren  % {{ com parentheses }}
+
+
+sas {{ tex \suralg{\vv{ s } } }} :: 'sas_' ::= 
+    | ·                      ::   :: Empty 
+    | sae                    ::   :: Single
+    | { sae }                ::   :: ImpArg
+    | { _ }                  ::   :: ImpArgHole {{ tex \{\_\} }}
+    | sas1 , sas2             ::   :: Concat   {{ com concatenate }}
+
+
+% Algorithmic target language
+
+aA {{ tex \alg{A} }}, aB {{ tex \alg{B} }}, aC {{ tex \alg{C} }}, aD {{ tex \alg{D} }}  :: 'aA_' ::=
+  | Unit           ::   :: UnitT {{ tex 1 }}
+  | Π x : aA . aB  ::   :: Pi    (+ bind x in aB +) {{ tex \Pi [[x]]:[[aA]] . \, [[aB]] }}
+  | ∀ x : aA . aB  ::   :: Forall (+ bind x in aB +) {{ tex \forall [[x]]:[[aA]] . \, [[aB]] }}
+  | ae1 = ae2 : aA ::   :: Eq    {{ tex [[ae1]] = [[ae2]] : [[aA]] }}
+  | ( aA )         :: S :: Paren 
+
+ae {{ tex \alg{e} }}, ap {{ tex \alg{p} }} :: 'ae_' ::=
+  | x           ::   :: Var    % {{ com variable }}
+  | ax          ::   :: AVar   {{ tex \widehat{x} }} % {{ com algorithmic variable }}
+  | <>          ::   :: Unit   % {{ com unit }}
+  | λ x : aA . ae ::   :: Lam    % {{ com lambda abstraction }}
+  | λ̂ x : aA . ae ::   :: PLam   % {{ com implicit lambda abstraction }}
+  | ae ( as )     ::   :: App    % {{ com application }}
+  | refl ae      ::   :: Refl   % {{ com reflexivity }}
+  | subst ( p : ae1 = ae2 : aA , x . aB , ae ) ::   :: Subst    % {{ com subst eliminator }}
+  | ( ae )       :: S :: Paren  % {{ com parentheses }}
+
+
+as {{ tex \alg{\vv{ s } } }} :: 'as_' ::= 
+    | ·                     ::   :: Empty 
+    | ae                    ::   :: Single
+    | { ae }                ::   :: ImpArg
+    | as1 , as2             ::   :: Concat   {{ com concatenate }}
+
+aG {{ tex \alg{\Gamma} }}, aΓ {{ tex \alg{\Gamma} }} :: 'aG_' ::= 
+    | ·                     ::   :: Empty 
+    | x : aA                ::   :: Single
+    | aΓ1 , aΓ2             ::   :: Concat   {{ com concatenate }}
+    | ( aΓ )                  :: S :: Paren  % {{ com parentheses }}
+
+% Constraints
+MG {{ tex M\Gamma }}, MΓ {{ tex M\Gamma }} :: 'mG_' ::= 
+    | ·                     ::   :: Empty 
+    | aΓ ⊢ ax ⇐ aA           ::   :: Chk
+    | MG1 , MG2             ::   :: Concat   {{ com concatenate }}
+    | ( MG )                  :: S :: Paren  % {{ com parentheses }}
+
+
+terminals :: 'terminals_' ::=
+  | ∃  :: :: exists    {{ tex \exists }}
+  | .  :: :: dot       {{ tex .\, }}
+  | ;  :: :: semi      {{ tex \mathbin{;} }}
+  | ∀  :: :: forall    {{ tex \forall }}
+  | ↑  :: :: upShift   {{ tex \mathord{\uparrow} }}
+  | ↓  :: :: downShift {{ tex \mathord{\downarrow} }}
+  | →  :: :: funArrow  {{ tex \rightarrow }}
+  | ⤳  :: :: leadsto  {{ tex \leadsto }}
+  | ↔  :: :: bijArrow  {{ tex \leftrightarrow }}
+  | ∊  :: :: inSet     {{ tex \in }}
+  | ∉  :: :: notInSet  {{ tex \notin }}
+  | ·  :: :: cDot      {{ tex \cdot }}
+  | ⊢  :: :: vdash     {{ tex \vdash }}
+  | ≤  :: :: subtype   {{ tex \leqslant }}
+  | ≥  :: :: supertype {{ tex \geqslant }}
+  % | ≈  :: :: equiv     {{ tex \simeq }}
+  | ∪  :: :: union     {{ tex \cup }}
+  | ∩  :: :: intersect {{ tex \cap }}
+  | \  :: :: setminus  {{ tex \setminus }}
+  | ⊆  :: :: subset    {{ tex \subseteq }}
+  | ↦  :: :: mapsto    {{ tex \mapsto }}
+  | ≈u :: :: unify      {{ tex \overset{u}{\simeq} }}
+  | ≈au :: :: antiunify {{ tex \overset{a}{\simeq} }}
+  | ∅ :: :: empty      {{ tex \emptyset }}
+  | ○ :: :: compose    {{ tex \circ }}
+  | ⇒ :: :: implies    {{ tex \Rightarrow }}
+  | ⇐ :: :: checks     {{ tex \Leftarrow }}
+  | ⇔ :: :: synchecks     {{ tex \Leftrightarrow }}
+  % | ≈a :: :: antiunify {{ tex \overset{g}{\simeq} }}
+  | ⊨  :: :: vDash     {{ tex \vDash }}
+  | ⫤  :: :: Dashv     {{ tex \Dashv }}
+  % | ⊫  :: :: VDash     {{ tex \mathcolor{\ccolor}{\VDash} }}
+  % | ⫥  :: :: DashV     {{ tex \mathcolor{\ccolor}{\DashV} }}
+  | ≠  :: :: neq       {{ tex \neq }}
+  | ≡  :: :: equiv     {{ tex \equiv }}
+  | ∨  :: :: LUB       {{ tex \vee }}
+  | ⇓ :: :: norm       {{ tex \Downarrow }}
+  | :≥ :: :: solGeq    {{ tex \mathbin{:\geqslant} }}
+  | :≤ :: :: solLeq    {{ tex \mathbin{:\leqslant} }}
+  | :≈ :: :: solEq     {{ tex \mathbin{:\simeq} }}
+  | Λ    :: :: bigLam    {{ tex \Lambda }}
+  | λ    :: :: lam       {{ tex \lambda^{\Pi} }}
+  | λ̂    :: :: lamhat    {{ tex \lambda^{\forall} }}
+  | ●    :: :: bullet    {{ tex \bullet }}
+  | ⇒>   :: :: spinInf   {{ tex \Rightarrow \hspace{-3pt} > }}
+  | <=<  :: :: compM     {{ tex \mathord{< \hspace{-5.3pt} = \hspace{-4.2pt} <} }}
+  | &    :: :: ampersand {{ tex \mathbin{\&} }}
+  | ▷    :: :: triangle {{ tex \triangleright }}
+  | ×    :: :: times     {{ tex \times }}
+  | ⊑   :: :: subeq     {{ tex \sqsubseteq }}
+  | >>  :: :: spinApp     {{ tex \mathbin{> \hspace{-3pt} >} }}
+  | <>  :: :: Unit     {{ tex \mathbin{< >} }}
+
+
+funs
+  F ::=
+fun 
+  [ e / x ] B  :: A :: Tsubst 
+by
+
+fun 
+  [ e2 / x ] e1  :: e :: tsubst 
+by
+
+
+fun 
+  [ ae / x ] aB :: aA :: aTsubst 
+by
+
+
+fun 
+  lift A  :: aA :: aliftT {{ tex [[A]] }}
+by
+
+fun 
+  lift ae  :: sae :: salift {{ tex [[ae]] }}
+by
