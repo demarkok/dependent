@@ -1,0 +1,161 @@
+
+defns
+  Wf :: 'Wf' ::=
+
+  defn Vars ; SVars ⊢ e WF :: :: WF :: 'WF' by
+
+% Variables
+
+    x ∊ Vars
+    ------------------- :: Var
+    Vars ; SVars ⊢ x WF
+
+    x ∊ SVars
+    --------------------- :: SVar  
+    Vars ; SVars ⊢ x WF 
+
+    ------------------------ :: MVar
+    Vars; SVars ⊢ ax[σ]  WF 
+
+% Constructors
+
+    --------------- :: Unit
+    Vars; SVars ⊢ <> WF 
+
+    Vars; SVars ⊢ A WF     Vars, x; SVars ⊢ e WF 
+    ---------------------------------------------- :: Lam
+    Vars; SVars ⊢ λx:A.e WF
+
+    Vars; SVars ⊢ A WF     Vars; SVars, x ⊢ e WF 
+    ---------------------------------------------- :: PLam
+    Vars; SVars ⊢ λ̂x:A.e WF
+
+    Vars; SVars ⊢ e WF 
+    ------------------------ :: Refl
+    Vars; SVars ⊢ refl e WF
+
+% Eliminators
+
+    Vars; · ⊢ e1 WF   Vars; · ⊢ e2 WF
+    ----------------------------------- :: AppNoS
+    Vars; SVars ⊢ e1 e2 WF
+
+
+    Vars; SVars ⊢ e1 WF    Vars; SVars ⊢ e2 WF     SVars ⊢ (e1 e2) INERT 
+    --------------------------------------------------------------------- :: App
+    Vars; SVars ⊢ e1 e2 WF
+
+
+    Vars; · ⊢ e1 WF   Vars; · ⊢ e2 WF   Vars; · ⊢ p WF   Vars; · ⊢ e WF
+    Vars; · ⊢ A WF    Vars, x; · ⊢ B WF
+    --------------------------------------------------------------------- :: SubstNoS
+    Vars; SVars ⊢  subst(p:e1=e2:A, x.B, e) WF
+
+
+    Vars; SVars ⊢ e1 WF   Vars; SVars ⊢ e2 WF   Vars; SVars ⊢ p WF   Vars; SVars ⊢ e WF
+    Vars; SVars ⊢ A WF    Vars, x; SVars ⊢ B WF
+    SVars ⊢ subst(p:e1=e2:A, x.B, e) INERT
+    -------------------------------------------------- :: Subst
+    Vars; SVars ⊢ subst(p:e1=e2:A, x.B, e) WF
+
+    Vars; SVars  ⊢ e1 WF    Vars, x; SVars ⊢ e2 WF
+    ---------------------------------------------- :: LetNoS
+    Vars; SVars ⊢ let x = e1 in e2 WF
+
+  defn Vars ; SVars ⊢ A WF :: :: TWF :: 'TWF' by
+
+    --------------------- :: Unit
+    Vars; SVars ⊢ Unit WF
+
+
+    Vars; SVars ⊢ A WF    Vars, x; SVars ⊢ B WF
+    ------------------------------------------- :: Pi
+    Vars; SVars ⊢ Πx:A.B WF
+
+
+    Vars; SVars ⊢ A WF    Vars; SVars, x ⊢ B WF
+    -------------------------------------------- :: Forall
+    Vars; SVars ⊢ ∀x:A.B WF
+
+
+    Vars; SVars ⊢ A WF    Vars; SVars ⊢ e1 WF    Vars; SVars ⊢ e2 WF
+    ----------------------------------------------------------------- :: Eq
+    Vars; SVars ⊢ e1 = e2 : A WF
+
+
+  defn SVars ⊢ e INERT :: :: Inert :: 'Inert' by
+
+% Variables
+
+    ---------------- :: Var
+    SVars ⊢ x INERT
+
+% Constructors
+
+    -------- :: Unit
+    SVars ⊢ <> INERT
+
+    --------------------- :: Lam
+    SVars ⊢ λx:A.e INERT
+
+    -------------------- :: PLam
+    SVars ⊢ λ̂x:A.e INERT
+
+    --------------------- :: Refl 
+    SVars ⊢ refl e INERT
+
+% Eliminators
+
+    x ∉ SVars
+    ------------------ :: AppVar
+    SVars ⊢ x e INERT 
+
+    SVars ⊢ e1 e2 INERT 
+    ---------------- :: AppApp 
+    SVars ⊢ (e1 e2) e3 INERT 
+    
+    SVars ⊢ subst(p:e1=e2:A, x.B, e) INERT 
+    ----------------------------------- :: AppSubst
+    SVars ⊢ (subst(p:e1=e2:A, x.B, e)) e3 INERT 
+
+    y ∉ SVars
+    -------------------------------------- :: SubstVar
+    SVars ⊢ subst(y:e1=e2:A, x.B, e) INERT 
+
+
+    SVars ⊢ e3 e4 INERT
+    ------------------------------------ :: SubstApp
+    SVars ⊢ subst((e3 e4):e1=e2:A, x.B, e) INERT 
+
+
+    SVars ⊢ subst(p:e0=e1:A0, x.B0, e2) INERT
+    ------------------------------------------------------------ :: SubstSubst
+    SVars ⊢ subst(subst(p:e0=e1:A0, x.B0, e2):e3=e4:A1, y.B1, e5) INERT 
+
+  defn ce WF :: :: ceOk :: 'ceOk' by
+
+
+  % ----- :: Place
+  % ● OK
+
+  % cA OK
+  % --------------- :: LamA
+  % λx:cA.e OK
+
+
+  % ce OK
+  % ----------- :: LamE
+  % λx:A.ce OK
+
+
+  % ce1 e2 INERT
+  % -----------
+  % ce1  e2 OK
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+% defns
+%   Red :: 'Red' ::=
+
+%   defn  e1 ↓ e2 :: :: Red :: 'Ok' by
+
+% % Variables
+
+%     ----- :: Var
+%     x ↓ x
+
+%     ------- :: SVar
+%     sx ↓ sx
+
+% % Constructors 
+
+%     ------- :: Unit
+%     <> ↓ <>
+
+%     A0 ↓ A1    e0 ↓ e1
+%     ------------------- :: Lam
+%     λx:A0.e0 ↓ λx:A1.e1
+
+%     A0 ↓ A1    e0 ↓ e1
+%     ---------------------- :: PLam
+%     λ̂sx:A0.e0 ↓ λ̂sx:A0.e0
+
+%     e0 ↓ e1
+%     ------------------ :: Refl
+%     refl e0 ↓ refl e1
+
+% % Eliminators
+
+%   e1 ↓ λx:A0.e0 
+%   ---------------- :: App
+%   e1 e2
+

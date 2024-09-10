@@ -8,6 +8,10 @@ grammar
     % | us1 ∊ us2                              ::   :: us_in
     | x : A ∊ Γ                              ::   :: in_ctxt
     | x : aA ∊ aΓ                             ::   :: a_in_ctxt
+    | x ∊ Vars                              ::   :: x_in_vars
+    | x ∊ SVars                             ::   :: x_in_svars
+    | x ∉ Vars                             ::   :: x_nin_vars
+    | x ∉ SVars                             ::   :: x_nin_svars
     % | UC1 ⊆ UC2                              ::   :: UC_subset
     % | UC1 = UC2                              ::   :: UC_eq
     % | SC1 ⊆ SC2                              ::   :: SC_subset

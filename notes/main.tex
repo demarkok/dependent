@@ -10,100 +10,57 @@
 
 \begin{document}
 
+
 \section{Syntax}
 
-  The difference between the surface and core syntax is that the surface spines
-  can have underscores.  Notice that all the types are \emph{core} types. 
-
   \begin{supertabular}{rll p{0.8\textwidth}}
-    % \paragraph*{Types}
-    (Core) Types & \ottAInline\\
-    \\
-    (Core) Contexts & \ottGInline\\
-    % \paragraph*{Terms}
-    Core Terms & \otteInline\\
-    \\
-    Core Spines & \ottsInline\\
-    \\
-    Surface Terms & \ottseInline\\
-    \\
-    Surface Spines & \ottssInline\\
-    \\
+    \otte\\
+    \ottA\\
   \end{supertabular}
 
-
 \newpage
 
-\section{Core}
-    \ottdefnCoreCheckLabeled{}
-    \ottdefnCoreInfLabeled{}
-    \ottdefnCoreSpineAppLabeled{}
-    \ottdefnCoreTypeConvLabeled{}
-    \ottdefnCoreCheckConvLabeled{}
-    \ottdefnCoreSpineConvLabeled{}
-    \ottdefnCoreWfLabeled{}
+\section{Well-formedness}
+  Here $[[Vars]]$ is a set of variables, 
+  $[[SVars]]$ is a set of variables 
+  that need to be in the safe positions.
 
+  Overall, we wish to guarantee that 
+  after normalization,
+  substitution of safe variables
+  does not produce new redexes. 
+
+  The constructor forms are well-formed by congruence:
+  if their components are well-formed.
+  Notice that $[[λ̂]]$ and $[[∀]]$ require 
+  the bound variable to be safe in the body.
+
+  The eliminator forms are well-formed 
+  if their components are well-formed and 
+  one of the following conditions hold:
+  \begin{itemize}
+    \item they do not contain variables that are required to be safe
+    \item they are \emph{inert} (see below), which implies that 
+      their outer structure withstands reduction and 
+      substitution of safe variables.
+  \end{itemize}
+
+    \ottdefnWfWFLabeled{}
+
+  The types are not eliminated, so they behave as 
+  constructor forms: they are well-formed by congruence.
+
+    \ottdefnWfTWFLabeled{}
+
+    The variables are always inert.
+    The constructor forms are always inert. 
+    The eliminator forms forbid their eliminated component to be a safe variable
+    or a constructor form, and require it to be inert. 
+    This way, if we assume that the term is well-typed, 
+    the eliminated component must be either an unsafe variable or 
+    another inert eliminator form.
+
+    \ottdefnWfInertLabeled{}
 \newpage
-
-\section{Surface to Core}
-    \ottdefnTypCheckLabeled{}
-    \ottdefnTypInfLabeled{}
-    \ottdefnTypSpineAppLabeled{}
-  
-\newpage
-
-\section{Algorithmic Syntax}
-
-  \begin{supertabular}{rll p{0.8\textwidth}}
-    % \paragraph*{Types}
-    Alg Types & \ottaAInline\\
-    \\
-    Alg Contexts & \ottaGInline\\
-    % \paragraph*{Terms}
-    Alg Core Terms & \ottaeInline\\
-    \\
-    Alg Core Spines & \ottasInline\\
-    \\
-    Alg Surface Terms & \ottsaeInline\\
-    \\
-    Alg Surface Spines & \ottsasInline\\
-    \\
-  \end{supertabular}
-
-
-\section{Surface to Algo}
-    \ottdefnAlgCheckLabeled{}
-    \ottdefnAlgInfLabeled{}
-    \ottdefnAlgSpineAppLabeled{}
-    \ottdefnAlgWfLabeled{}
-
-  % \subsection{Equational theory}
-  %   % \ottdefnTypInfConvLabeled{}
-  %   \ottdefnTypSpineConvLabeled{}
-
-  % \subsection{Typing}
-  %   \ottdefnTypInfLabeled{}
-  %   % \ottdefnTypSubLabeled{}
-  %   \ottdefnTypSpineAppLabeled{}
-  %   % \ottdefnTypInstLabeled{}
-
-
-  % \ottall
-
-  % \ottdefns
-
-% \begin{multicols}{2}
-% \ottdefnDeXXredV{}
-% \columnbreak
-
-% \ottdefnAlXXredV{}
-% \end{multicols}
-
-% \begin{multicols}{2}
-%   \ottdefnDeXXredC{}
-%   \columnbreak
-
-%   \ottdefnAlXXredC{}
-% \end{multicols}
 
 \end{document}
