@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.1)  10 SEP 2024 17:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.1)  13 SEP 2024 10:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1913,74 +1913,14 @@ ocal/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/lo
 cal/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_fygcup.enc}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 43.
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--48
-
- []
-
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 48.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
-
-
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 48.
-[2.2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.e
-nc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.en
-c}]
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 48.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 53--53
 
  []
 
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
+(Font)              scaled to size 10.0pt on input line 53.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 53.
@@ -1998,52 +1938,104 @@ Class acmart Warning: \vspace should only be used to provide space above/below
 surrounding objects on input line 53.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--63
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 53.
+[2.2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.e
+nc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.en
+c}]
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 53.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
 
  []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 58.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 58.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 58.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 58.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 58.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+
+ []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 68.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 68.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 68.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 68.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 68.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 68.
 
 
 
 ! Undefined control sequence.
 \f@nch@olh ...necountL \@headfootfont \shorttitle 
                                                   \strut 
-l.63     \ottdefnWfInertLabeled{}
+l.68     \ottdefnWfInertLabeled{}
                                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2054,26 +2046,296 @@ and I'll forget about whatever was undefined.
 [3.3]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 68.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 63.
+surrounding objects on input line 68.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 68.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 68.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 68.
 
 
 
-(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
-File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
-)
-(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf8.def
-File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
-) [4.4]
+[4.4]
+Underfull \hbox (badness 10000) in paragraph at lines 73--78
+
+ []
+
+! Illegal parameter number in definition of \df@label.
+<to be read again> 
+                   1
+l.78 ...edrule{\ottdruleRedRedAppLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \label@name.
+<to be read again> 
+                   1
+l.78 ...edrule{\ottdruleRedRedAppLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.78 ...edrule{\ottdruleRedRedAppLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.78 ...edrule{\ottdruleRedRedAppLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 78.
+
+! Illegal parameter number in definition of \df@label.
+<to be read again> 
+                   1
+l.79 ...drule{\ottdruleRedRedAppPLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \label@name.
+<to be read again> 
+                   1
+l.79 ...drule{\ottdruleRedRedAppPLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.79 ...drule{\ottdruleRedRedAppPLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.79 ...drule{\ottdruleRedRedAppPLamLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 79.
+
+! Illegal parameter number in definition of \df@label.
+<to be read again> 
+                   1
+l.80 ...rule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \label@name.
+<to be read again> 
+                   1
+l.80 ...rule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.80 ...rule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.80 ...rule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 80.
+
+! Illegal parameter number in definition of \df@label.
+<to be read again> 
+                   1
+l.81 ...rule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \label@name.
+<to be read again> 
+                   1
+l.81 ...rule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.81 ...rule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.81 ...rule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 81.
+
+! Illegal parameter number in definition of \df@label.
+<to be read again> 
+                   1
+l.82 ...edrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \label@name.
+<to be read again> 
+                   1
+l.82 ...edrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.82 ...edrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.82 ...edrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 82.
+
+! Illegal parameter number in definition of \df@label.
+<to be read again> 
+                   1
+l.83 ...edrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \label@name.
+<to be read again> 
+                   1
+l.83 ...edrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.83 ...edrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.83 ...edrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 83.
+
 
 Class acmart Warning: ACM keywords are mandatory for papers over two pages.
 
 
 Class acmart Warning: CCS concepts are mandatory for papers over two pages.
 
+
+
+! Undefined control sequence.
+\f@nch@olh ...necountL \@headfootfont \shorttitle 
+                                                  \strut 
+l.94 \end{document}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
+File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf8.def
+File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
+) [5.5]
 (./main.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
@@ -2084,16 +2346,16 @@ L3 programming layer <2020/03/25>
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9063F281F115AC85AC8566DFAF3102B4;217.
+(rerunfilecheck)             Checksum: 35CB3C5C3F2C6236A2AF2962FC2D1A7A;318.
  ) 
 Here is how much of TeX's memory you used:
- 40152 strings out of 473584
- 764751 string characters out of 5728329
+ 40334 strings out of 473584
+ 768855 string characters out of 5728329
  1950905 words of memory out of 5000000
- 61938 multiletter control sequences out of 15000+600000
- 679274 words of font info for 212 fonts, out of 8000000 for 9000
+ 62102 multiletter control sequences out of 15000+600000
+ 680093 words of font info for 218 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 108i,17n,134p,1828b,602s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,17n,134p,1724b,602s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.
 pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/LibertineMathR
 M.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBioli
@@ -2106,10 +2368,10 @@ ic/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/new
 tx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmia
 X.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on main.pdf (4 pages, 374650 bytes).
+Output written on main.pdf (5 pages, 381869 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 71725 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 170 PDF objects out of 1000 (max. 8388607)
+ 130 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 71733 words of extra memory for PDF output out of 74296 (max. 10000000)
 

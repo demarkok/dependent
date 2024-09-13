@@ -28,7 +28,7 @@ e {{ tex e }}, p {{ tex p }} :: 'e_' ::=
   | e1 { e2 }   ::   :: PApp    % {{ com application }}
   | refl e      ::   :: Refl   % {{ com reflexivity }}
   | subst ( p : e1 = e2 : A , x . B , e ) ::   :: Subst    % {{ com subst eliminator }}
-  | let x = e1 in e2 ::   :: Let    % {{ com let binding }}
+  | let x : A = e1 in e2 ::   :: Let    % {{ com let binding }}
   | ax [ σ ]    ::   :: AVar   {{ tex [[ax]] [ [[σ]] ] }} % {{ com algorithmic variable }}
   | _           ::   :: Placeholder
   | ( e )       :: S :: Paren  % {{ com parentheses }}
@@ -38,10 +38,16 @@ A {{ tex A }}, B {{ tex B }}, C {{ tex C }}, D {{ tex D }}  :: 'A_' ::=
   | Π x : A . B    ::   :: Pi    (+ bind x in B +) {{ tex \Pi [[x]]:[[A]] . \, [[B]] }}
   | ∀ x : A . B    ::   :: Forall (+ bind x in B +) {{ tex \forall [[x]]:[[A]] . \, [[B]] }}
   | e1 = e2 : A    ::   :: Eq    {{ tex [[e1]] = [[e2]] : [[A]] }}
-  | let x = e in A ::   :: Let    % {{ com let binding }}
+  | let x : A = e in B ::   :: Let    % {{ com let binding }}
   | ( A )          :: S :: Paren 
 
-ce, cp :: 'ce_' ::=
+eAList :: 'eAList_' ::=
+  | ·                   ::   :: Empty    
+  | e                   ::   :: Term
+  | A                   ::   :: Type
+  | eAList1 , eAList2   ::   :: Concat   {{ com concatenate }}
+
+ce {{ tex cE }}, cp {{ tex cP }} :: 'ce_' ::=
   | ●             ::   :: Place
   | λ x : cA . e ::   :: LamA
   | λ x : A . ce ::   :: LamE
@@ -98,7 +104,6 @@ MG {{ tex M\Gamma }}, MΓ {{ tex M\Gamma }} :: 'mG_' ::=
     | MG1 , MG2            ::   :: Concat   {{ com concatenate }}
     | ( MG )               :: S :: Paren  % {{ com parentheses }}
 
-
 terminals :: 'terminals_' ::=
   | ∃  :: :: exists    {{ tex \exists }}
   | .  :: :: dot       {{ tex .\, }}
@@ -154,11 +159,16 @@ terminals :: 'terminals_' ::=
   | <>  :: :: Unit     {{ tex \mathbin{< >} }}
 
 
-% funs
-%   F ::=
-% fun 
-%   [ e / x ] B  :: A :: Tsubst 
-% by
+funs
+  F ::=
+fun 
+  ce [ e1 ] :: e :: ECtxtSubst 
+by
+
+
+fun
+  fv e :: Vars :: eFV
+by 
 
 % fun 
 %   [ e2 / x ] e1  :: e :: tsubst 

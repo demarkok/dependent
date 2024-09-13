@@ -1,36 +1,114 @@
-% defns
-%   Red :: 'Red' ::=
+defns
+  Red :: 'Red' ::=
 
-%   defn  e1 ↓ e2 :: :: Red :: 'Ok' by
+  defn  e1 ⤳ e2 :: :: Red :: 'Red' by
 
-% % Variables
+  % Variables
 
-%     ----- :: Var
-%     x ↓ x
 
-%     ------- :: SVar
-%     sx ↓ sx
+    A0 ⤳ A1  
+    ------------------- :: LamA
+    λx:A0.e ⤳ λx:A1.e
 
-% % Constructors 
+    e0 ⤳ e1
+    ------------------- :: Lame
+    λx:A.e0 ⤳ λx:A.e1
 
-%     ------- :: Unit
-%     <> ↓ <>
 
-%     A0 ↓ A1    e0 ↓ e1
-%     ------------------- :: Lam
-%     λx:A0.e0 ↓ λx:A1.e1
+    A0 ⤳ A1 
+    --------------------- :: PLamA
+    λ̂x:A0.e ⤳ λ̂x:A1.e
 
-%     A0 ↓ A1    e0 ↓ e1
-%     ---------------------- :: PLam
-%     λ̂sx:A0.e0 ↓ λ̂sx:A0.e0
 
-%     e0 ↓ e1
-%     ------------------ :: Refl
-%     refl e0 ↓ refl e1
+    e0 ⤳ e1
+    -------------------- :: PLame
+    λ̂x:A.e0 ⤳ λ̂x:A.e1
 
-% % Eliminators
+    e0 ⤳ e1
+    ------------------ :: Refl
+    refl e0 ⤳ refl e1
 
-%   e1 ↓ λx:A0.e0 
-%   ---------------- :: App
-%   e1 e2
+    % Eliminators
 
+    e0 ⤳ e1
+    ------------ :: App1
+    e0 e ⤳ e1 e
+
+    ------------------------------ :: AppLam
+    (λx:A.e0) e ⤳ let x:A = e in e0
+
+    ------------------------------ :: AppPLam
+    (λ̂x:A.e0){e} ⤳ let x:A = e in e0
+
+
+
+    p0 ⤳ p1
+    ------------------------------ :: SubstP
+    subst(p0:e1=e2:A, x.B, e) ⤳ subst(p1:e1=e2:A, x.B, e)
+
+
+
+    e0 ⤳ e1
+    --------------------------------------------------- :: SubstE1
+    subst(p:e0=e2:A, x.B, e) ⤳ subst(p:e1=e2:A, x.B, e)
+
+    e0 ⤳ e2
+    --------------------------------------------------- :: SubstE2
+    subst(p:e1=e0:A, x.B, e) ⤳ subst(p:e1=e2:A, x.B, e)
+
+    A0 ⤳ A
+    --------------------------------------------------- :: SubstA
+    subst(p:e1=e2:A0, x.B, e) ⤳ subst(p:e1=e2:A, x.B, e)
+
+    B0 ⤳ B
+    --------------------------------------------------- :: SubstB
+    subst(p:e1=e2:A, x.B0, e) ⤳ subst(p:e1=e2:A, x.B, e)
+
+    e0 ⤳ e
+    --------------------------------------------------- :: SubstE
+    subst(p:e1=e2:A, x.B, e0) ⤳ subst(p:e1=e2:A, x.B, e)
+
+    e0, e2, e2, A, B are ground
+    ------------------------------------- :: SubstRed
+    subst((refl e0):e1=e2:A, x.B, e) ⤳ e
+    
+
+    A0 ⤳ A  
+    ----------------------------------------- :: LetA
+    let x:A0 = e in e0 ⤳ let x:A = e in e0
+
+
+    e0 ⤳ e1
+    -------------------------------------- :: LetE1
+    let x:A = e0 in e ⤳ let x:A = e1 in e2
+
+
+    e0 ⤳ e2
+    ----------------------------------------- :: LetE2
+    let x:A = e in e0  ⤳ let x:A = e1 in e2
+
+    ce is safe
+    ------------------------------------------ :: LRedSafe
+    let x:A = e in ce[x]  ⤳ let x:A = e in ce[e]
+
+    e is neutral
+    ------------------------------------------ :: LRedNeut
+    let x:A = e in ce[x]  ⤳ let x:A = e in ce[e]
+
+    e is ground
+    ------------------------------------------ :: LRedGr
+    let x:A = e in ce[x]  ⤳ let x:A = e in ce[e]
+
+    x ∉ fv e2  A, e1 are ground
+    ------------------------- :: LNotin
+    let x:A = e1 in e2  ⤳ e2
+
+  defn  A1 ⤳ A2 :: :: TRed :: 'TRed' by
+
+  defn e is neutral :: :: Neut :: 'Neut' by
+
+  defn eAList are ground :: :: eAGround :: 'eAGr' by
+
+  defn e is ground :: :: eGround :: 'eGr' by
+
+  defn ce is safe :: :: ceSafe :: 'ceS' by

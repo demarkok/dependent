@@ -58,9 +58,10 @@ defns
     -------------------------------------------------- :: Subst
     Vars; SVars ⊢ subst(p:e1=e2:A, x.B, e) WF
 
-    Vars; SVars  ⊢ e1 WF    Vars, x; SVars ⊢ e2 WF
+    Vars; SVars  ⊢ e1 WF   Vars; SVars  ⊢ A WF  
+    Vars, x; SVars ⊢ e2 WF
     ---------------------------------------------- :: LetNoS
-    Vars; SVars ⊢ let x = e1 in e2 WF
+    Vars; SVars ⊢ let x : A = e1 in e2 WF
 
   defn Vars ; SVars ⊢ A WF :: :: TWF :: 'TWF' by
 
@@ -82,6 +83,10 @@ defns
     ----------------------------------------------------------------- :: Eq
     Vars; SVars ⊢ e1 = e2 : A WF
 
+    Vars; SVars ⊢ A WF    Vars; SVars ⊢ e WF 
+    Vars, x; SVars ⊢ B WF
+    ------------------------------------------ :: Let
+    Vars; SVars ⊢ let x:A = e in B WF
 
   defn SVars ⊢ e INERT :: :: Inert :: 'Inert' by
 

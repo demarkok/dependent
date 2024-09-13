@@ -58,11 +58,11 @@
 \ottprodline{|}{e_{{\mathrm{1}}}  \ottsym{\{}  e_{{\mathrm{2}}}  \ottsym{\}}}{}{}{}{}\ottprodnewline
 \ottprodline{|}{\ottkw{refl} \, e}{}{}{}{}\ottprodnewline
 \ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
 \ottprodline{|}{ \widehat{x}  [  \sigma  ] }{}{}{}{}\ottprodnewline
 \ottprodline{|}{\ottkw{\_}}{}{}{}{}}
 
-\newcommand{\otteInline}{\ottprodinline{}{e  ,\ p}{\Coloneqq}{{\ottmv{x}} \mid {\mathbin{< >}} \mid {\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  e} \mid {\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  e} \mid {e_{{\mathrm{1}}} \, e_{{\mathrm{2}}}} \mid {e_{{\mathrm{1}}}  \ottsym{\{}  e_{{\mathrm{2}}}  \ottsym{\}}} \mid {\ottkw{refl} \, e} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}} \mid { \widehat{x}  [  \sigma  ] } \mid {\ottkw{\_}}}}
+\newcommand{\otteInline}{\ottprodinline{}{e  ,\ p}{\Coloneqq}{{\ottmv{x}} \mid {\mathbin{< >}} \mid {\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  e} \mid {\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  e} \mid {e_{{\mathrm{1}}} \, e_{{\mathrm{2}}}} \mid {e_{{\mathrm{1}}}  \ottsym{\{}  e_{{\mathrm{2}}}  \ottsym{\}}} \mid {\ottkw{refl} \, e} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}} \mid { \widehat{x}  [  \sigma  ] } \mid {\ottkw{\_}}}}
 
 \newcommand{\ottA}{
 \ottrulehead{A  ,\ B  ,\ C  ,\ D}{\Coloneqq}{}\ottprodnewline
@@ -70,30 +70,39 @@
 \ottprodline{|}{ \Pi  \ottmv{x} : A  . \,  B }{}{\textsf{bind}\; \ottmv{x}\; \textsf{in}\; B}{}{}\ottprodnewline
 \ottprodline{|}{ \forall  \ottmv{x} : A  . \,  B }{}{\textsf{bind}\; \ottmv{x}\; \textsf{in}\; B}{}{}\ottprodnewline
 \ottprodline{|}{ e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A }{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{=}  e \, \ottkw{in} \, A}{}{}{}{}}
+\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, B}{}{}{}{}}
 
-\newcommand{\ottAInline}{\ottprodinline{}{A  ,\ B  ,\ C  ,\ D}{\Coloneqq}{{ 1 } \mid { \Pi  \ottmv{x} : A  . \,  B } \mid { \forall  \ottmv{x} : A  . \,  B } \mid { e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A } \mid {\ottkw{let} \, \ottmv{x}  \ottsym{=}  e \, \ottkw{in} \, A}}}
+\newcommand{\ottAInline}{\ottprodinline{}{A  ,\ B  ,\ C  ,\ D}{\Coloneqq}{{ 1 } \mid { \Pi  \ottmv{x} : A  . \,  B } \mid { \forall  \ottmv{x} : A  . \,  B } \mid { e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A } \mid {\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, B}}}
+
+\newcommand{\otteAList}{
+\ottrulehead{\ottnt{eAList}}{\Coloneqq}{}\ottprodnewline
+\ottfirstprodline{|}{\cdot}{}{}{}{}\ottprodnewline
+\ottprodline{|}{e}{}{}{}{}\ottprodnewline
+\ottprodline{|}{A}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottnt{eAList_{{\mathrm{1}}}}  \ottsym{,}  \ottnt{eAList_{{\mathrm{2}}}}}{}{}{}{\ottcom{concatenate}}}
+
+\newcommand{\otteAListInline}{\ottprodinline{}{\ottnt{eAList}}{\Coloneqq}{{\cdot} \mid {e} \mid {A} \mid {\ottnt{eAList_{{\mathrm{1}}}}  \ottsym{,}  \ottnt{eAList_{{\mathrm{2}}}}}}}
 
 \newcommand{\ottce}{
-\ottrulehead{\ottnt{ce}  ,\ \ottnt{cp}}{\Coloneqq}{}\ottprodnewline
+\ottrulehead{cE  ,\ cP}{\Coloneqq}{}\ottprodnewline
 \ottfirstprodline{|}{\bullet}{}{}{}{}\ottprodnewline
 \ottprodline{|}{\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  cA  .\,  e}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  \ottnt{ce}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  cE}{}{}{}{}\ottprodnewline
 \ottprodline{|}{\lambda^{\forall}  \ottmv{x}  \ottsym{:}  cA  .\,  e}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  \ottnt{ce}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottnt{ce_{{\mathrm{1}}}} \, e_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{e_{{\mathrm{1}}} \, \ottnt{ce_{{\mathrm{2}}}}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{refl} \, \ottnt{ce}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  \ottnt{cp}  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  \ottnt{ce_{{\mathrm{1}}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  \ottnt{ce_{{\mathrm{2}}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  cE}{}{}{}{}\ottprodnewline
+\ottprodline{|}{cE_{{\mathrm{1}}} \, e_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{e_{{\mathrm{1}}} \, cE_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{refl} \, cE}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  cP  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  cE_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  cE_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
 \ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  cA  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
 \ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  cB  \ottsym{,}  e  \ottsym{)}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  \ottnt{ce}  \ottsym{)}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{=}  \ottnt{ce_{{\mathrm{1}}}} \, \ottkw{in} \, e_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
-\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, \ottnt{ce_{{\mathrm{2}}}}}{}{}{}{}}
+\ottprodline{|}{\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  cE  \ottsym{)}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{=}  cE_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}}{}{}{}{}\ottprodnewline
+\ottprodline{|}{\ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, cE_{{\mathrm{2}}}}{}{}{}{}}
 
-\newcommand{\ottceInline}{\ottprodinline{}{\ottnt{ce}  ,\ \ottnt{cp}}{\Coloneqq}{{\bullet} \mid {\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  cA  .\,  e} \mid {\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  \ottnt{ce}} \mid {\lambda^{\forall}  \ottmv{x}  \ottsym{:}  cA  .\,  e} \mid {\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  \ottnt{ce}} \mid {\ottnt{ce_{{\mathrm{1}}}} \, e_{{\mathrm{2}}}} \mid {e_{{\mathrm{1}}} \, \ottnt{ce_{{\mathrm{2}}}}} \mid {\ottkw{refl} \, \ottnt{ce}} \mid {\ottkw{subst} \, \ottsym{(}  \ottnt{cp}  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  \ottnt{ce_{{\mathrm{1}}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  \ottnt{ce_{{\mathrm{2}}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  cA  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  cB  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  \ottnt{ce}  \ottsym{)}} \mid {\ottkw{let} \, \ottmv{x}  \ottsym{=}  \ottnt{ce_{{\mathrm{1}}}} \, \ottkw{in} \, e_{{\mathrm{2}}}} \mid {\ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, \ottnt{ce_{{\mathrm{2}}}}}}}
+\newcommand{\ottceInline}{\ottprodinline{}{cE  ,\ cP}{\Coloneqq}{{\bullet} \mid {\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  cA  .\,  e} \mid {\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  cE} \mid {\lambda^{\forall}  \ottmv{x}  \ottsym{:}  cA  .\,  e} \mid {\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  cE} \mid {cE_{{\mathrm{1}}} \, e_{{\mathrm{2}}}} \mid {e_{{\mathrm{1}}} \, cE_{{\mathrm{2}}}} \mid {\ottkw{refl} \, cE} \mid {\ottkw{subst} \, \ottsym{(}  cP  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  cE_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  cE_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  cA  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  cB  \ottsym{,}  e  \ottsym{)}} \mid {\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  cE  \ottsym{)}} \mid {\ottkw{let} \, \ottmv{x}  \ottsym{=}  cE_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}} \mid {\ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, cE_{{\mathrm{2}}}}}}
 
 \newcommand{\ottcA}{
 \ottrulehead{cA  ,\ cB}{\Coloneqq}{}\ottprodnewline
@@ -101,11 +110,11 @@
 \ottprodline{|}{ \Pi  \ottmv{x} : A  . \,  cB }{}{}{}{}\ottprodnewline
 \ottprodline{|}{ \forall  \ottmv{x} : cA  . \,  B }{}{}{}{}\ottprodnewline
 \ottprodline{|}{ \forall  \ottmv{x} : A  . \,  cB }{}{}{}{}\ottprodnewline
-\ottprodline{|}{ \ottnt{ce_{{\mathrm{1}}}}  =  e_{{\mathrm{2}}}  :  A }{}{}{}{}\ottprodnewline
-\ottprodline{|}{ e_{{\mathrm{1}}}  =  \ottnt{ce_{{\mathrm{2}}}}  :  A }{}{}{}{}\ottprodnewline
+\ottprodline{|}{ cE_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A }{}{}{}{}\ottprodnewline
+\ottprodline{|}{ e_{{\mathrm{1}}}  =  cE_{{\mathrm{2}}}  :  A }{}{}{}{}\ottprodnewline
 \ottprodline{|}{ e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  cA }{}{}{}{}}
 
-\newcommand{\ottcAInline}{\ottprodinline{}{cA  ,\ cB}{\Coloneqq}{{ \Pi  \ottmv{x} : cA  . \,  B } \mid { \Pi  \ottmv{x} : A  . \,  cB } \mid { \forall  \ottmv{x} : cA  . \,  B } \mid { \forall  \ottmv{x} : A  . \,  cB } \mid { \ottnt{ce_{{\mathrm{1}}}}  =  e_{{\mathrm{2}}}  :  A } \mid { e_{{\mathrm{1}}}  =  \ottnt{ce_{{\mathrm{2}}}}  :  A } \mid { e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  cA }}}
+\newcommand{\ottcAInline}{\ottprodinline{}{cA  ,\ cB}{\Coloneqq}{{ \Pi  \ottmv{x} : cA  . \,  B } \mid { \Pi  \ottmv{x} : A  . \,  cB } \mid { \forall  \ottmv{x} : cA  . \,  B } \mid { \forall  \ottmv{x} : A  . \,  cB } \mid { cE_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A } \mid { e_{{\mathrm{1}}}  =  cE_{{\mathrm{2}}}  :  A } \mid { e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  cA }}}
 
 \newcommand{\otts}{
 \ottrulehead{\sigma}{\Coloneqq}{}\ottprodnewline
@@ -149,6 +158,7 @@
 \newcommand{\ottgrammar}{\ottgrammartabular{
 \otte\ottinterrule
 \ottA\ottinterrule
+\otteAList\ottinterrule
 \ottce\ottinterrule
 \ottcA\ottinterrule
 \otts\ottinterrule
@@ -159,6 +169,420 @@
 }}
 
 % defnss
+% fundefns F
+% fundefn ECtxtSubst
+
+\newcommand{\ottfundefnECtxtSubst}[1]{\begin{ottfundefnblock}[#1]{$cE  \ottsym{[}  e_{{\mathrm{1}}}  \ottsym{]}$}{}
+\end{ottfundefnblock}}
+
+
+% fundefn eFV
+
+\newcommand{\ottfundefneFV}[1]{\begin{ottfundefnblock}[#1]{$\ottkw{fv} \, e$}{}
+\end{ottfundefnblock}}
+
+
+\newcommand{\ottfundefnsF}{
+\ottfundefnECtxtSubst{}
+\ottfundefneFV{}}
+
+% defns Red
+%% defn Red
+\newcommand{\ottdruleRedRedLamAName}[0]{RedRedLamA}
+\newcommand{\ottdruleRedRedLamALabel}[0]{RedRedLamA}
+\newcommand{\ottdruleRedRedLamA}[1]{\ottdrule[#1]{%
+\ottpremise{A_{{\mathrm{0}}}  \leadsto  A_{{\mathrm{1}}}}%
+}{
+\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A_{{\mathrm{0}}}  .\,  e  \leadsto  \lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A_{{\mathrm{1}}}  .\,  e}{%
+{\ottdruleRedRedLamAName}{}%
+}}
+\newcommand{\ottdruleRedRedLamALabeled}[2][]{\ottdruleRedRedLamA{#2}%
+  \ruleLabel{\ottdruleRedRedLamAName}{#1\ottdruleRedRedLamALabel}
+}
+
+
+\newcommand{\ottdruleRedRedLameName}[0]{RedRedLame}
+\newcommand{\ottdruleRedRedLameLabel}[0]{RedRedLame}
+\newcommand{\ottdruleRedRedLame}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}}%
+}{
+\lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  e_{{\mathrm{0}}}  \leadsto  \lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  e_{{\mathrm{1}}}}{%
+{\ottdruleRedRedLameName}{}%
+}}
+\newcommand{\ottdruleRedRedLameLabeled}[2][]{\ottdruleRedRedLame{#2}%
+  \ruleLabel{\ottdruleRedRedLameName}{#1\ottdruleRedRedLameLabel}
+}
+
+
+\newcommand{\ottdruleRedRedPLamAName}[0]{RedRedPLamA}
+\newcommand{\ottdruleRedRedPLamALabel}[0]{RedRedPLamA}
+\newcommand{\ottdruleRedRedPLamA}[1]{\ottdrule[#1]{%
+\ottpremise{A_{{\mathrm{0}}}  \leadsto  A_{{\mathrm{1}}}}%
+}{
+\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A_{{\mathrm{0}}}  .\,  e  \leadsto  \lambda^{\forall}  \ottmv{x}  \ottsym{:}  A_{{\mathrm{1}}}  .\,  e}{%
+{\ottdruleRedRedPLamAName}{}%
+}}
+\newcommand{\ottdruleRedRedPLamALabeled}[2][]{\ottdruleRedRedPLamA{#2}%
+  \ruleLabel{\ottdruleRedRedPLamAName}{#1\ottdruleRedRedPLamALabel}
+}
+
+
+\newcommand{\ottdruleRedRedPLameName}[0]{RedRedPLame}
+\newcommand{\ottdruleRedRedPLameLabel}[0]{RedRedPLame}
+\newcommand{\ottdruleRedRedPLame}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}}%
+}{
+\lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  e_{{\mathrm{0}}}  \leadsto  \lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  e_{{\mathrm{1}}}}{%
+{\ottdruleRedRedPLameName}{}%
+}}
+\newcommand{\ottdruleRedRedPLameLabeled}[2][]{\ottdruleRedRedPLame{#2}%
+  \ruleLabel{\ottdruleRedRedPLameName}{#1\ottdruleRedRedPLameLabel}
+}
+
+
+\newcommand{\ottdruleRedRedReflName}[0]{RedRedRefl}
+\newcommand{\ottdruleRedRedReflLabel}[0]{RedRedRefl}
+\newcommand{\ottdruleRedRedRefl}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}}%
+}{
+\ottkw{refl} \, e_{{\mathrm{0}}}  \leadsto  \ottkw{refl} \, e_{{\mathrm{1}}}}{%
+{\ottdruleRedRedReflName}{}%
+}}
+\newcommand{\ottdruleRedRedReflLabeled}[2][]{\ottdruleRedRedRefl{#2}%
+  \ruleLabel{\ottdruleRedRedReflName}{#1\ottdruleRedRedReflLabel}
+}
+
+
+\newcommand{\ottdruleRedRedAppOneName}[0]{RedRedApp1}
+\newcommand{\ottdruleRedRedAppOneLabel}[0]{RedRedAppOne}
+\newcommand{\ottdruleRedRedAppOne}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}}%
+}{
+e_{{\mathrm{0}}} \, e  \leadsto  e_{{\mathrm{1}}} \, e}{%
+{\ottdruleRedRedAppOneName}{}%
+}}
+\newcommand{\ottdruleRedRedAppOneLabeled}[2][]{\ottdruleRedRedAppOne{#2}%
+  \ruleLabel{\ottdruleRedRedAppOneName}{#1\ottdruleRedRedAppOneLabel}
+}
+
+
+\newcommand{\ottdruleRedRedAppLamName}[0]{RedRedAppLam}
+\newcommand{\ottdruleRedRedAppLamLabel}[0]{RedRedAppLam}
+\newcommand{\ottdruleRedRedAppLam}[1]{\ottdrule[#1]{%
+}{
+\ottsym{(}  \lambda^{\Pi}  \ottmv{x}  \ottsym{:}  A  .\,  e_{{\mathrm{0}}}  \ottsym{)} \, e  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, e_{{\mathrm{0}}}}{%
+{\ottdruleRedRedAppLamName}{}%
+}}
+\newcommand{\ottdruleRedRedAppLamLabeled}[2][]{\ottdruleRedRedAppLam{#2}%
+  \ruleLabel{\ottdruleRedRedAppLamName}{#1\ottdruleRedRedAppLamLabel}
+}
+
+
+\newcommand{\ottdruleRedRedAppPLamName}[0]{RedRedAppPLam}
+\newcommand{\ottdruleRedRedAppPLamLabel}[0]{RedRedAppPLam}
+\newcommand{\ottdruleRedRedAppPLam}[1]{\ottdrule[#1]{%
+}{
+\ottsym{(}  \lambda^{\forall}  \ottmv{x}  \ottsym{:}  A  .\,  e_{{\mathrm{0}}}  \ottsym{)}  \ottsym{\{}  e  \ottsym{\}}  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, e_{{\mathrm{0}}}}{%
+{\ottdruleRedRedAppPLamName}{}%
+}}
+\newcommand{\ottdruleRedRedAppPLamLabeled}[2][]{\ottdruleRedRedAppPLam{#2}%
+  \ruleLabel{\ottdruleRedRedAppPLamName}{#1\ottdruleRedRedAppPLamLabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstPName}[0]{RedRedSubstP}
+\newcommand{\ottdruleRedRedSubstPLabel}[0]{RedRedSubstP}
+\newcommand{\ottdruleRedRedSubstP}[1]{\ottdrule[#1]{%
+\ottpremise{p_{{\mathrm{0}}}  \leadsto  p_{{\mathrm{1}}}}%
+}{
+\ottkw{subst} \, \ottsym{(}  p_{{\mathrm{0}}}  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}  \leadsto  \ottkw{subst} \, \ottsym{(}  p_{{\mathrm{1}}}  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{%
+{\ottdruleRedRedSubstPName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstPLabeled}[2][]{\ottdruleRedRedSubstP{#2}%
+  \ruleLabel{\ottdruleRedRedSubstPName}{#1\ottdruleRedRedSubstPLabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstEOneName}[0]{RedRedSubstE1}
+\newcommand{\ottdruleRedRedSubstEOneLabel}[0]{RedRedSubstEOne}
+\newcommand{\ottdruleRedRedSubstEOne}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}}%
+}{
+\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{0}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}  \leadsto  \ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{%
+{\ottdruleRedRedSubstEOneName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstEOneLabeled}[2][]{\ottdruleRedRedSubstEOne{#2}%
+  \ruleLabel{\ottdruleRedRedSubstEOneName}{#1\ottdruleRedRedSubstEOneLabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstETwoName}[0]{RedRedSubstE2}
+\newcommand{\ottdruleRedRedSubstETwoLabel}[0]{RedRedSubstETwo}
+\newcommand{\ottdruleRedRedSubstETwo}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{2}}}}%
+}{
+\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{0}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}  \leadsto  \ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{%
+{\ottdruleRedRedSubstETwoName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstETwoLabeled}[2][]{\ottdruleRedRedSubstETwo{#2}%
+  \ruleLabel{\ottdruleRedRedSubstETwoName}{#1\ottdruleRedRedSubstETwoLabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstAName}[0]{RedRedSubstA}
+\newcommand{\ottdruleRedRedSubstALabel}[0]{RedRedSubstA}
+\newcommand{\ottdruleRedRedSubstA}[1]{\ottdrule[#1]{%
+\ottpremise{A_{{\mathrm{0}}}  \leadsto  A}%
+}{
+\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A_{{\mathrm{0}}}  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}  \leadsto  \ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{%
+{\ottdruleRedRedSubstAName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstALabeled}[2][]{\ottdruleRedRedSubstA{#2}%
+  \ruleLabel{\ottdruleRedRedSubstAName}{#1\ottdruleRedRedSubstALabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstBName}[0]{RedRedSubstB}
+\newcommand{\ottdruleRedRedSubstBLabel}[0]{RedRedSubstB}
+\newcommand{\ottdruleRedRedSubstB}[1]{\ottdrule[#1]{%
+\ottpremise{B_{{\mathrm{0}}}  \leadsto  B}%
+}{
+\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B_{{\mathrm{0}}}  \ottsym{,}  e  \ottsym{)}  \leadsto  \ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{%
+{\ottdruleRedRedSubstBName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstBLabeled}[2][]{\ottdruleRedRedSubstB{#2}%
+  \ruleLabel{\ottdruleRedRedSubstBName}{#1\ottdruleRedRedSubstBLabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstEName}[0]{RedRedSubstE}
+\newcommand{\ottdruleRedRedSubstELabel}[0]{RedRedSubstE}
+\newcommand{\ottdruleRedRedSubstE}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e}%
+}{
+\ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e_{{\mathrm{0}}}  \ottsym{)}  \leadsto  \ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}}{%
+{\ottdruleRedRedSubstEName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstELabeled}[2][]{\ottdruleRedRedSubstE{#2}%
+  \ruleLabel{\ottdruleRedRedSubstEName}{#1\ottdruleRedRedSubstELabel}
+}
+
+
+\newcommand{\ottdruleRedRedSubstRedName}[0]{RedRedSubstRed}
+\newcommand{\ottdruleRedRedSubstRedLabel}[0]{RedRedSubstRed}
+\newcommand{\ottdruleRedRedSubstRed}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \ottsym{,}  e_{{\mathrm{2}}}  \ottsym{,}  e_{{\mathrm{2}}}  \ottsym{,}  A  \ottsym{,}  B \, \ottkw{are} \, \ottkw{ground}}%
+}{
+\ottkw{subst} \, \ottsym{(}  \ottsym{(}  \ottkw{refl} \, e_{{\mathrm{0}}}  \ottsym{)}  \ottsym{:}  e_{{\mathrm{1}}}  \ottsym{=}  e_{{\mathrm{2}}}  \ottsym{:}  A  \ottsym{,}  \ottmv{x}  .\,  B  \ottsym{,}  e  \ottsym{)}  \leadsto  e}{%
+{\ottdruleRedRedSubstRedName}{}%
+}}
+\newcommand{\ottdruleRedRedSubstRedLabeled}[2][]{\ottdruleRedRedSubstRed{#2}%
+  \ruleLabel{\ottdruleRedRedSubstRedName}{#1\ottdruleRedRedSubstRedLabel}
+}
+
+
+\newcommand{\ottdruleRedRedLetAName}[0]{RedRedLetA}
+\newcommand{\ottdruleRedRedLetALabel}[0]{RedRedLetA}
+\newcommand{\ottdruleRedRedLetA}[1]{\ottdrule[#1]{%
+\ottpremise{A_{{\mathrm{0}}}  \leadsto  A}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A_{{\mathrm{0}}}  \ottsym{=}  e \, \ottkw{in} \, e_{{\mathrm{0}}}  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, e_{{\mathrm{0}}}}{%
+{\ottdruleRedRedLetAName}{}%
+}}
+\newcommand{\ottdruleRedRedLetALabeled}[2][]{\ottdruleRedRedLetA{#2}%
+  \ruleLabel{\ottdruleRedRedLetAName}{#1\ottdruleRedRedLetALabel}
+}
+
+
+\newcommand{\ottdruleRedRedLetEOneName}[0]{RedRedLetE1}
+\newcommand{\ottdruleRedRedLetEOneLabel}[0]{RedRedLetEOne}
+\newcommand{\ottdruleRedRedLetEOne}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{0}}} \, \ottkw{in} \, e  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}}{%
+{\ottdruleRedRedLetEOneName}{}%
+}}
+\newcommand{\ottdruleRedRedLetEOneLabeled}[2][]{\ottdruleRedRedLetEOne{#2}%
+  \ruleLabel{\ottdruleRedRedLetEOneName}{#1\ottdruleRedRedLetEOneLabel}
+}
+
+
+\newcommand{\ottdruleRedRedLetETwoName}[0]{RedRedLetE2}
+\newcommand{\ottdruleRedRedLetETwoLabel}[0]{RedRedLetETwo}
+\newcommand{\ottdruleRedRedLetETwo}[1]{\ottdrule[#1]{%
+\ottpremise{e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{2}}}}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, e_{{\mathrm{0}}}  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}}{%
+{\ottdruleRedRedLetETwoName}{}%
+}}
+\newcommand{\ottdruleRedRedLetETwoLabeled}[2][]{\ottdruleRedRedLetETwo{#2}%
+  \ruleLabel{\ottdruleRedRedLetETwoName}{#1\ottdruleRedRedLetETwoLabel}
+}
+
+
+\newcommand{\ottdruleRedRedLRedSafeName}[0]{RedRedLRedSafe}
+\newcommand{\ottdruleRedRedLRedSafeLabel}[0]{RedRedLRedSafe}
+\newcommand{\ottdruleRedRedLRedSafe}[1]{\ottdrule[#1]{%
+\ottpremise{cE \, \ottkw{is} \, \ottkw{safe}}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, cE  \ottsym{[}  \ottmv{x}  \ottsym{]}  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, cE  \ottsym{[}  e  \ottsym{]}}{%
+{\ottdruleRedRedLRedSafeName}{}%
+}}
+\newcommand{\ottdruleRedRedLRedSafeLabeled}[2][]{\ottdruleRedRedLRedSafe{#2}%
+  \ruleLabel{\ottdruleRedRedLRedSafeName}{#1\ottdruleRedRedLRedSafeLabel}
+}
+
+
+\newcommand{\ottdruleRedRedLRedNeutName}[0]{RedRedLRedNeut}
+\newcommand{\ottdruleRedRedLRedNeutLabel}[0]{RedRedLRedNeut}
+\newcommand{\ottdruleRedRedLRedNeut}[1]{\ottdrule[#1]{%
+\ottpremise{e \, \ottkw{is} \, \ottkw{neutral}}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, cE  \ottsym{[}  \ottmv{x}  \ottsym{]}  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, cE  \ottsym{[}  e  \ottsym{]}}{%
+{\ottdruleRedRedLRedNeutName}{}%
+}}
+\newcommand{\ottdruleRedRedLRedNeutLabeled}[2][]{\ottdruleRedRedLRedNeut{#2}%
+  \ruleLabel{\ottdruleRedRedLRedNeutName}{#1\ottdruleRedRedLRedNeutLabel}
+}
+
+
+\newcommand{\ottdruleRedRedLRedGrName}[0]{RedRedLRedGr}
+\newcommand{\ottdruleRedRedLRedGrLabel}[0]{RedRedLRedGr}
+\newcommand{\ottdruleRedRedLRedGr}[1]{\ottdrule[#1]{%
+\ottpremise{e \, \ottkw{is} \, \ottkw{ground}}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, cE  \ottsym{[}  \ottmv{x}  \ottsym{]}  \leadsto  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, cE  \ottsym{[}  e  \ottsym{]}}{%
+{\ottdruleRedRedLRedGrName}{}%
+}}
+\newcommand{\ottdruleRedRedLRedGrLabeled}[2][]{\ottdruleRedRedLRedGr{#2}%
+  \ruleLabel{\ottdruleRedRedLRedGrName}{#1\ottdruleRedRedLRedGrLabel}
+}
+
+
+\newcommand{\ottdruleRedRedLNotinName}[0]{RedRedLNotin}
+\newcommand{\ottdruleRedRedLNotinLabel}[0]{RedRedLNotin}
+\newcommand{\ottdruleRedRedLNotin}[1]{\ottdrule[#1]{%
+\ottpremise{\ottmv{x}  \notin  \ottkw{fv} \, e_{{\mathrm{2}}} \quad A  \ottsym{,}  e_{{\mathrm{1}}} \, \ottkw{are} \, \ottkw{ground}}%
+}{
+\ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}}  \leadsto  e_{{\mathrm{2}}}}{%
+{\ottdruleRedRedLNotinName}{}%
+}}
+\newcommand{\ottdruleRedRedLNotinLabeled}[2][]{\ottdruleRedRedLNotin{#2}%
+  \ruleLabel{\ottdruleRedRedLNotinName}{#1\ottdruleRedRedLNotinLabel}
+}
+
+\newcommand{\ottdefnHeaderRedRed}[0]{$e_{{\mathrm{1}}}  \leadsto  e_{{\mathrm{2}}}$}
+
+\newcommand{\ottdefnRedRed}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderRedRed}{}
+\ottusedrule{\ottdruleRedRedLamA{}}
+\ottusedrule{\ottdruleRedRedLame{}}
+\ottusedrule{\ottdruleRedRedPLamA{}}
+\ottusedrule{\ottdruleRedRedPLame{}}
+\ottusedrule{\ottdruleRedRedRefl{}}
+\ottusedrule{\ottdruleRedRedAppOne{}}
+\ottusedrule{\ottdruleRedRedAppLam{}}
+\ottusedrule{\ottdruleRedRedAppPLam{}}
+\ottusedrule{\ottdruleRedRedSubstP{}}
+\ottusedrule{\ottdruleRedRedSubstEOne{}}
+\ottusedrule{\ottdruleRedRedSubstETwo{}}
+\ottusedrule{\ottdruleRedRedSubstA{}}
+\ottusedrule{\ottdruleRedRedSubstB{}}
+\ottusedrule{\ottdruleRedRedSubstE{}}
+\ottusedrule{\ottdruleRedRedSubstRed{}}
+\ottusedrule{\ottdruleRedRedLetA{}}
+\ottusedrule{\ottdruleRedRedLetEOne{}}
+\ottusedrule{\ottdruleRedRedLetETwo{}}
+\ottusedrule{\ottdruleRedRedLRedSafe{}}
+\ottusedrule{\ottdruleRedRedLRedNeut{}}
+\ottusedrule{\ottdruleRedRedLRedGr{}}
+\ottusedrule{\ottdruleRedRedLNotin{}}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnRedRedLabeled}[2][]{\begin{ottdefnblock}[#2]{\ottdefnHeaderRedRed}{}
+\ottusedrule{\ottdruleRedRedLamALabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLameLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedPLamALabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedPLameLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedReflLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedAppOneLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedAppLamLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedAppPLamLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstPLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstEOneLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstETwoLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstALabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstBLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstELabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedSubstRedLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLetALabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLetEOneLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLetETwoLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
+\ottusedrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+\end{ottdefnblock}}
+
+%% defn TRed
+
+\newcommand{\ottdefnHeaderRedTRed}[0]{$A_{{\mathrm{1}}}  \leadsto  A_{{\mathrm{2}}}$}
+
+\newcommand{\ottdefnRedTRed}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderRedTRed}{}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnRedTRedLabeled}[2][]{\begin{ottdefnblock}[#2]{\ottdefnHeaderRedTRed}{}
+\end{ottdefnblock}}
+
+%% defn Neut
+
+\newcommand{\ottdefnHeaderRedNeut}[0]{$e \, \ottkw{is} \, \ottkw{neutral}$}
+
+\newcommand{\ottdefnRedNeut}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderRedNeut}{}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnRedNeutLabeled}[2][]{\begin{ottdefnblock}[#2]{\ottdefnHeaderRedNeut}{}
+\end{ottdefnblock}}
+
+%% defn eAGround
+
+\newcommand{\ottdefnHeaderRedeAGround}[0]{$\ottnt{eAList} \, \ottkw{are} \, \ottkw{ground}$}
+
+\newcommand{\ottdefnRedeAGround}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderRedeAGround}{}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnRedeAGroundLabeled}[2][]{\begin{ottdefnblock}[#2]{\ottdefnHeaderRedeAGround}{}
+\end{ottdefnblock}}
+
+%% defn eGround
+
+\newcommand{\ottdefnHeaderRedeGround}[0]{$e \, \ottkw{is} \, \ottkw{ground}$}
+
+\newcommand{\ottdefnRedeGround}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderRedeGround}{}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnRedeGroundLabeled}[2][]{\begin{ottdefnblock}[#2]{\ottdefnHeaderRedeGround}{}
+\end{ottdefnblock}}
+
+%% defn ceSafe
+
+\newcommand{\ottdefnHeaderRedceSafe}[0]{$cE \, \ottkw{is} \, \ottkw{safe}$}
+
+\newcommand{\ottdefnRedceSafe}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderRedceSafe}{}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnRedceSafeLabeled}[2][]{\begin{ottdefnblock}[#2]{\ottdefnHeaderRedceSafe}{}
+\end{ottdefnblock}}
+
+
+\newcommand{\ottdefnsRed}{
+\ottdefnRedRed{}\ottdefnRedTRed{}\ottdefnRedNeut{}\ottdefnRedeAGround{}\ottdefnRedeGround{}\ottdefnRedceSafe{}}
+
 % defns Wf
 %% defn WF
 \newcommand{\ottdruleWfWFVarName}[0]{WfWFVar}
@@ -308,9 +732,10 @@ V  \mathbin{;}  sV  \vdash  \ottkw{subst} \, \ottsym{(}  p  \ottsym{:}  e_{{\mat
 \newcommand{\ottdruleWfWFLetNoSName}[0]{WfWFLetNoS}
 \newcommand{\ottdruleWfWFLetNoSLabel}[0]{WfWFLetNoS}
 \newcommand{\ottdruleWfWFLetNoS}[1]{\ottdrule[#1]{%
-\ottpremise{V  \mathbin{;}  sV  \vdash  e_{{\mathrm{1}}} \, \ottkw{WF} \quad V  \ottsym{,}  \ottmv{x}  \mathbin{;}  sV  \vdash  e_{{\mathrm{2}}} \, \ottkw{WF}}%
+\ottpremise{V  \mathbin{;}  sV  \vdash  e_{{\mathrm{1}}} \, \ottkw{WF} \quad V  \mathbin{;}  sV  \vdash  A \, \ottkw{WF}}%
+\ottpremise{V  \ottsym{,}  \ottmv{x}  \mathbin{;}  sV  \vdash  e_{{\mathrm{2}}} \, \ottkw{WF}}%
 }{
-V  \mathbin{;}  sV  \vdash  \ottkw{let} \, \ottmv{x}  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}} \, \ottkw{WF}}{%
+V  \mathbin{;}  sV  \vdash  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e_{{\mathrm{1}}} \, \ottkw{in} \, e_{{\mathrm{2}}} \, \ottkw{WF}}{%
 {\ottdruleWfWFLetNoSName}{}%
 }}
 \newcommand{\ottdruleWfWFLetNoSLabeled}[2][]{\ottdruleWfWFLetNoS{#2}%
@@ -401,6 +826,20 @@ V  \mathbin{;}  sV  \vdash   e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A  \, \ot
   \ruleLabel{\ottdruleWfTWFEqName}{#1\ottdruleWfTWFEqLabel}
 }
 
+
+\newcommand{\ottdruleWfTWFLetName}[0]{WfTWFLet}
+\newcommand{\ottdruleWfTWFLetLabel}[0]{WfTWFLet}
+\newcommand{\ottdruleWfTWFLet}[1]{\ottdrule[#1]{%
+\ottpremise{V  \mathbin{;}  sV  \vdash  A \, \ottkw{WF} \quad V  \mathbin{;}  sV  \vdash  e \, \ottkw{WF}}%
+\ottpremise{V  \ottsym{,}  \ottmv{x}  \mathbin{;}  sV  \vdash  B \, \ottkw{WF}}%
+}{
+V  \mathbin{;}  sV  \vdash  \ottkw{let} \, \ottmv{x}  \ottsym{:}  A  \ottsym{=}  e \, \ottkw{in} \, B \, \ottkw{WF}}{%
+{\ottdruleWfTWFLetName}{}%
+}}
+\newcommand{\ottdruleWfTWFLetLabeled}[2][]{\ottdruleWfTWFLet{#2}%
+  \ruleLabel{\ottdruleWfTWFLetName}{#1\ottdruleWfTWFLetLabel}
+}
+
 \newcommand{\ottdefnHeaderWfTWF}[0]{$V  \mathbin{;}  sV  \vdash  A \, \ottkw{WF}$}
 
 \newcommand{\ottdefnWfTWF}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderWfTWF}{}
@@ -408,6 +847,7 @@ V  \mathbin{;}  sV  \vdash   e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A  \, \ot
 \ottusedrule{\ottdruleWfTWFPi{}}
 \ottusedrule{\ottdruleWfTWFForall{}}
 \ottusedrule{\ottdruleWfTWFEq{}}
+\ottusedrule{\ottdruleWfTWFLet{}}
 \end{ottdefnblock}}
 
 
@@ -416,6 +856,7 @@ V  \mathbin{;}  sV  \vdash   e_{{\mathrm{1}}}  =  e_{{\mathrm{2}}}  :  A  \, \ot
 \ottusedrule{\ottdruleWfTWFPiLabeled[#1]{}}
 \ottusedrule{\ottdruleWfTWFForallLabeled[#1]{}}
 \ottusedrule{\ottdruleWfTWFEqLabeled[#1]{}}
+\ottusedrule{\ottdruleWfTWFLetLabeled[#1]{}}
 \end{ottdefnblock}}
 
 %% defn Inert
@@ -589,7 +1030,7 @@ sV  \vdash  \ottkw{subst} \, \ottsym{(}  \ottkw{subst} \, \ottsym{(}  p  \ottsym
 
 %% defn ceOk
 
-\newcommand{\ottdefnHeaderWfceOk}[0]{$\ottnt{ce} \, \ottkw{WF}$}
+\newcommand{\ottdefnHeaderWfceOk}[0]{$cE \, \ottkw{WF}$}
 
 \newcommand{\ottdefnWfceOk}[1]{\begin{ottdefnblock}[#1]{\ottdefnHeaderWfceOk}{}
 \end{ottdefnblock}}
@@ -603,6 +1044,8 @@ sV  \vdash  \ottkw{subst} \, \ottsym{(}  \ottkw{subst} \, \ottsym{(}  p  \ottsym
 \ottdefnWfWF{}\ottdefnWfTWF{}\ottdefnWfInert{}\ottdefnWfceOk{}}
 
 \newcommand{\ottdefnss}{
+\ottfundefnsF
+\ottdefnsRed
 \ottdefnsWf
 }
 
