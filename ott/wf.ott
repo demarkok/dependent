@@ -1,166 +1,77 @@
-
 defns
   Wf :: 'Wf' ::=
 
-  defn Vars ; SVars ⊢ e WF :: :: WF :: 'WF' by
+  defn Γ ; MΓ  ⊢ e :: :: WF :: 'WF' by
 
-% Variables
+    varx : A ∊ Γ 
+    ------------- :: Var
+    Γ; MΓ ⊢ varx
 
-    x ∊ Vars
-    ------------------- :: Var
-    Vars ; SVars ⊢ x WF
+    ------------- :: Unit
+    Γ; MΓ ⊢ <>
 
-    x ∊ SVars
-    --------------------- :: SVar  
-    Vars ; SVars ⊢ x WF 
+    Γ; MΓ ⊢ A    Γ, x:A ; MΓ ⊢ e
+    ------------------------------- :: Lam
+    Γ; MΓ ⊢ λx:A.e
 
-    ------------------------ :: MVar
-    Vars; SVars ⊢ ax[σ]  WF 
-
-% Constructors
-
-    --------------- :: Unit
-    Vars; SVars ⊢ <> WF 
-
-    Vars; SVars ⊢ A WF     Vars, x; SVars ⊢ e WF 
-    ---------------------------------------------- :: Lam
-    Vars; SVars ⊢ λx:A.e WF
-
-    Vars; SVars ⊢ A WF     Vars; SVars, x ⊢ e WF 
-    ---------------------------------------------- :: PLam
-    Vars; SVars ⊢ λ̂x:A.e WF
-
-    Vars; SVars ⊢ e WF 
-    ------------------------ :: Refl
-    Vars; SVars ⊢ refl e WF
-
-% Eliminators
-
-    Vars; · ⊢ e1 WF   Vars; · ⊢ e2 WF
-    ----------------------------------- :: AppNoS
-    Vars; SVars ⊢ e1 e2 WF
+    Γ; MΓ ⊢ A    Γ, sx:A ; MΓ ⊢ e
+    -------------------------------- :: PLam
+    Γ; MΓ ⊢ λ̂sx:A.e
 
 
-    Vars; SVars ⊢ e1 WF    Vars; SVars ⊢ e2 WF     SVars ⊢ (e1 e2) INERT 
-    --------------------------------------------------------------------- :: App
-    Vars; SVars ⊢ e1 e2 WF
+    Γ; MΓ ⊢ e1    Γ; MΓ ⊢ e2
+    --------------------------- :: App
+    Γ; MΓ ⊢ e1 e2
+
+    Γ; MΓ ⊢ e1    Γ; MΓ ⊢ e2
+    --------------------------- :: PApp
+    Γ; MΓ ⊢ e1{e2}
+
+    Γ; MΓ ⊢ e1
+    --------------------------- :: PAppU
+    Γ; MΓ ⊢ e1{_}
 
 
-    Vars; · ⊢ e1 WF   Vars; · ⊢ e2 WF   Vars; · ⊢ p WF   Vars; · ⊢ e WF
-    Vars; · ⊢ A WF    Vars, x; · ⊢ B WF
-    --------------------------------------------------------------------- :: SubstNoS
-    Vars; SVars ⊢  subst(p:e1=e2:A, x.B, e) WF
+    Γ; MΓ ⊢ e
+    ---------------- :: Refl
+    Γ; MΓ ⊢ refl e
+
+    Γ; MΓ ⊢ p   Γ; MΓ ⊢ e1   Γ; MΓ ⊢ e2
+    Γ; MΓ ⊢ A   Γ, x:A; MΓ ⊢ B   Γ; MΓ ⊢ e
+    --------------------------------------- :: Subst
+    Γ; MΓ ⊢ subst(p:e1=e2:A, x.B, e) 
 
 
-    Vars; SVars ⊢ e1 WF   Vars; SVars ⊢ e2 WF   Vars; SVars ⊢ p WF   Vars; SVars ⊢ e WF
-    Vars; SVars ⊢ A WF    Vars, x; SVars ⊢ B WF
-    SVars ⊢ subst(p:e1=e2:A, x.B, e) INERT
-    -------------------------------------------------- :: Subst
-    Vars; SVars ⊢ subst(p:e1=e2:A, x.B, e) WF
+    Γ; MΓ ⊢ e1  Γ; MΓ ⊢ A
+    Γ, varx:A; MΓ ⊢ e2
+    ----------------------------- :: Let
+    Γ; MΓ ⊢ let varx:A = e1 in e2
 
-    Vars; SVars  ⊢ e1 WF   Vars; SVars  ⊢ A WF  
-    Vars, x; SVars ⊢ e2 WF
-    ---------------------------------------------- :: LetNoS
-    Vars; SVars ⊢ let x : A = e1 in e2 WF
+    (Γ' ⊢ ax ⇐ A) ∊ MΓ   Γ' ⊆ Γ  Γ; MΓ ⊢ σ : Γ'
+    ------------------------------------------- :: AVar
+    Γ; MΓ ⊢ ax[σ]
 
-  defn Vars ; SVars ⊢ A WF :: :: TWF :: 'TWF' by
+  defn Γ ; MΓ ⊢ A :: :: TWF :: 'TWF' by
 
-    --------------------- :: Unit
-    Vars; SVars ⊢ Unit WF
+    ------------- :: UnitT
+    Γ; MΓ ⊢ Unit
 
+    Γ; MΓ ⊢ A   Γ, x:A; MΓ ⊢ B
+    --------------------------- :: Pi
+    Γ; MΓ ⊢ Πx:A.B
 
-    Vars; SVars ⊢ A WF    Vars, x; SVars ⊢ B WF
-    ------------------------------------------- :: Pi
-    Vars; SVars ⊢ Πx:A.B WF
+    Γ; MΓ ⊢ A   Γ, sx:A; MΓ ⊢ B
+    ----------------------------- :: Forall
+    Γ; MΓ ⊢ ∀sx:A.B
 
-
-    Vars; SVars ⊢ A WF    Vars; SVars, x ⊢ B WF
-    -------------------------------------------- :: Forall
-    Vars; SVars ⊢ ∀x:A.B WF
-
-
-    Vars; SVars ⊢ A WF    Vars; SVars ⊢ e1 WF    Vars; SVars ⊢ e2 WF
-    ----------------------------------------------------------------- :: Eq
-    Vars; SVars ⊢ e1 = e2 : A WF
-
-    Vars; SVars ⊢ A WF    Vars; SVars ⊢ e WF 
-    Vars, x; SVars ⊢ B WF
-    ------------------------------------------ :: Let
-    Vars; SVars ⊢ let x:A = e in B WF
-
-  defn SVars ⊢ e INERT :: :: Inert :: 'Inert' by
-
-% Variables
-
-    ---------------- :: Var
-    SVars ⊢ x INERT
-
-% Constructors
-
-    -------- :: Unit
-    SVars ⊢ <> INERT
-
-    --------------------- :: Lam
-    SVars ⊢ λx:A.e INERT
-
-    -------------------- :: PLam
-    SVars ⊢ λ̂x:A.e INERT
-
-    --------------------- :: Refl 
-    SVars ⊢ refl e INERT
-
-% Eliminators
-
-    x ∉ SVars
-    ------------------ :: AppVar
-    SVars ⊢ x e INERT 
-
-    SVars ⊢ e1 e2 INERT 
-    ---------------- :: AppApp 
-    SVars ⊢ (e1 e2) e3 INERT 
-    
-    SVars ⊢ subst(p:e1=e2:A, x.B, e) INERT 
-    ----------------------------------- :: AppSubst
-    SVars ⊢ (subst(p:e1=e2:A, x.B, e)) e3 INERT 
-
-    y ∉ SVars
-    -------------------------------------- :: SubstVar
-    SVars ⊢ subst(y:e1=e2:A, x.B, e) INERT 
+    Γ; MΓ ⊢ A   Γ; MΓ ⊢ e1  Γ; MΓ ⊢ e2
+    ----------------------------------- :: Eq
+    Γ; MΓ ⊢ e1 = e2 : A
 
 
-    SVars ⊢ e3 e4 INERT
-    ------------------------------------ :: SubstApp
-    SVars ⊢ subst((e3 e4):e1=e2:A, x.B, e) INERT 
+    % --------------------------------- :: Let
+    % Γ; klet varx : A = e in B 
 
+  defn Γ ; MΓ2  ⊢ Mσ : MΓ1 :: :: MSWF :: 'MSWF' by
 
-    SVars ⊢ subst(p:e0=e1:A0, x.B0, e2) INERT
-    ------------------------------------------------------------ :: SubstSubst
-    SVars ⊢ subst(subst(p:e0=e1:A0, x.B0, e2):e3=e4:A1, y.B1, e5) INERT 
-
-  defn ce WF :: :: ceOk :: 'ceOk' by
-
-
-  % ----- :: Place
-  % ● OK
-
-  % cA OK
-  % --------------- :: LamA
-  % λx:cA.e OK
-
-
-  % ce OK
-  % ----------- :: LamE
-  % λx:A.ce OK
-
-
-  % ce1 e2 INERT
-  % -----------
-  % ce1  e2 OK
-
-
-
-
-
-
-
-
+  defn Γ ; MΓ ⊢ σ : Γ' :: :: RenWF :: 'RenWF' by

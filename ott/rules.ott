@@ -6,12 +6,14 @@ grammar
     % | mu : varset1 ↔ varset2                 ::   :: moving_decl
     % | mu is bijective                        ::   :: moving_bij
     % | us1 ∊ us2                              ::   :: us_in
-    | x : A ∊ Γ                              ::   :: in_ctxt
-    | x : aA ∊ aΓ                             ::   :: a_in_ctxt
-    | x ∊ Vars                              ::   :: x_in_vars
-    | x ∊ SVars                             ::   :: x_in_svars
-    | x ∉ Vars                             ::   :: x_nin_vars
-    | x ∉ SVars                             ::   :: x_nin_svars
+    | varx : A ∊ Γ                              ::   :: in_ctxt
+    | varx : aA ∊ aΓ                             ::   :: a_in_ctxt
+    | varx ∊ Vars                              ::   :: x_in_vars
+    % | x ∊ SVars                             ::   :: x_in_svars
+    | varx ∉ Vars                             ::   :: x_nin_vars
+    | Mentr ∊ MΓ                               ::   :: ax_in_MG
+    | Γ1 ⊆ Γ2                                ::   :: ctxt_subset
+    % | x ∉ SVars                             ::   :: x_nin_svars
     % | UC1 ⊆ UC2                              ::   :: UC_subset
     % | UC1 = UC2                              ::   :: UC_eq
     % | SC1 ⊆ SC2                              ::   :: SC_subset

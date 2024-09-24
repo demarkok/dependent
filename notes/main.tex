@@ -14,22 +14,22 @@
 \section{Syntax}
 
   \begin{supertabular}{rll p{0.8\textwidth}}
-    \otte\\
-    \ottA\\
+  \otte\\
+  \ottA\\
   \end{supertabular}
 
 \newpage
 
-\section{Well-formedness}
+\section{Safety}
 
   To formulate the completeness properties (at some point in the future),
   we need to restrict the `implicit' binders $[[λ̂]]$ and $[[∀]]$ 
   to bind variables that are at safe positions in the body.
   For this purpose, we define the well-formedness relation.
 
-  Here $[[Vars]]$ is a set of variables, 
-  $[[SVars]]$ is a set of variables 
-  that need to be in the safe positions.
+  Here $[[Vars]]$ is a set of variables,
+  including normal variables ($[[x]]$) 
+  and safe variables ($[[sx]]$), whose positions are restricted.
   Overall, we wish to guarantee that 
   after normalization,
   substitution of safe variables
@@ -50,12 +50,12 @@
       substitution of safe variables.
   \end{itemize}
 
-    \ottdefnWfWFLabeled{}
+    \ottdefnOkOKLabeled{}
 
   The types are not eliminated, so they behave as 
   constructor forms: they are well-formed by congruence.
 
-    \ottdefnWfTWFLabeled{}
+    \ottdefnOkOKFLabeled{}
 
     The variables are always inert.
     The constructor forms are always inert. 
@@ -65,30 +65,166 @@
     the eliminated component must be either an unsafe variable or 
     another inert eliminator form.
 
-    \ottdefnWfInertLabeled{}
+    \ottdefnOkInertLabeled{}
 \newpage
 
 \section{Reduction}
+  \label{sec:red}
   
   In the reduction, we first reduce the
   components of terms (congruence rules).
   Then, if the outer structure is an eliminator form,
   there are several rules where something interesting happens:
-  \begin{ottdefnblock}[#2]{\ottdefnHeaderRedRed}{}
-    \ottusedrule{\ottdruleRedRedAppLamLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedAppPLamLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+  \begin{ottdefnblock}[]{\ottdefnHeaderRedRed}{}
+    \ottusedrule{\ottdruleRedRedAppLamLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedAppPLamLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLRedSafeLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLRedNeutLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLRedGrLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLNotinLabeled[]{}}
   \end{ottdefnblock}
   (Here $[[ce]]$ is an evaluation context, i.e. a term with a hole 
   in a term position; $[[ce is safe]]$ means that the hole is in a safe position)
 
   The invariant that we are preserving:
   \begin{itemize}
-    \item reduction does not eliminate metavariables
-    \item reduction preserves safety of the metavariables
+    \item reduction does not eliminate metavariables and the safe variables;
+    \item reduction preserves safety of the metavariables and the safe variables.
   \end{itemize}
+
+
+\subsection{Properties}
+
+\begin{lemma}[Reduction preserves intertness]
+\end{lemma}
+
+
+\begin{lemma}[Reduction preserves safety]
+  If $[[Vars ⊢ e0 OK ]]$
+  and $[[e0 ⤳ e1]]$ then 
+  $[[Vars ⊢ e1 OK ]]$.
+  If $[[Vars ⊢ A0 OK]]$
+  and $[[A0 ⤳ A1]]$ then
+  $[[Vars ⊢ A1 OK]]$.
+\end{lemma}
+\begin{proof}
+  By induction on the reduction relation.
+  \begin{itemize}
+    \item If the last step of the reduction is a congruence rule
+      on a constructor form
+    (
+      \ruleref{\ottdruleRedRedLamALabel}, 
+      \ruleref{\ottdruleRedRedLameLabel},
+      \ruleref{\ottdruleRedRedPLamALabel},
+      \ruleref{\ottdruleRedRedPLameLabel},
+      \ruleref{\ottdruleRedRedReflLabel}
+    ) 
+    then the safety of the metavariables
+    is proved by the induction hypothesis and the corresponding 
+    safety rule 
+    (\ruleref{\ottdruleOkOKLamLabel}, 
+     \ruleref{\ottdruleOkOKPLamLabel}, or
+     \ruleref{\ottdruleOkOKReflLabel}).
+
+    \item \ruleref{\ottdruleRedRedAppOneLabel}
+    Then our term is the application $[[p1 p2]]$,
+    and its well-formedness is given by one of the two rules:
+    \begin{itemize}
+      \item \ruleref{\ottdruleOkOKAppNoSLabel}
+        Then the well-formedness follows immediately 
+        by the induction hypothesis applied to 
+        $[[Vars ⊢ p1 OK]]$.
+      \item \ruleref{\ottdruleOkOKAppLabel}
+        Then we will also need to prove 
+          $[[p1' p2  INERT]]$,
+    \end{itemize}
+
+  \begin{itemize}
+
+  \end{itemize}
+\end{proof}
+
+\newpage
+
+\section{Normalization}
+
+
+\begin{definition}
+  $[[e]]$ is normalized if 
+  there is no $[[e']]$ such that $[[e ⤳ e']]$.
+\end{definition}
+
+\begin{definition}
+  $[[e']]$ is a normal form of $[[e]]$ if
+  $[[e ⤳* e']]$ and $[[e']]$ is normalized.
+\end{definition}
+
+
+\section{Well-formedness}
+
+We define well-formedness of types and terms
+in the standard congruent way.
+The interesting part is the base case for the metavariables
+(\ruleref{\ottdruleWfWFAVarLabel}),
+
+  \begin{ottdefnblock}[]{\ottdefnHeaderWfWF}{}
+    \ottusedrule{\ottdruleWfWFVarLabeled[]{}}
+    \ottusedrule{\ottdruleWfWFPLamLabeled[]{}}
+    \ottusedrule{\ottdruleWfWFAVarLabeled[]{}}
+  \end{ottdefnblock}
+
+
+\section{Metavariables and metasubstitution}
+
+\begin{definition}
+  Metasubstitution $[[Mσ]]$
+  is a mapping from metavariables to terms.
+  The  specification 
+  $[[Γ; MΓ2 ⊢ Mσ : MΓ1]]$ states that
+\end{definition}
+
+
+\section{Conversion}
+
+\begin{definition}
+ $[[Γ; MΓ ⊢ e0 ≡ e1]]$
+ is defined as alpha-equivalence 
+ transitively closed under reduction. 
+\end{definition}
+
+
+
+\section{Unification}
+
+
+\begin{definition}
+  Suppose that two terms $[[e0]]$ and 
+  $[[e1]]$ are well-typed in the context $[[Γ]]$
+  and metacontext $[[MΓ]]$, i.e., $[[Γ; MΓ ⊢ e0]]$
+  and $[[Γ; MΓ ⊢ e1]]$.
+  Then the metasubstitution $[[Mσ0]]$ is a unifier
+  of $[[e0]]$ and $[[e1]]$ if
+  \begin{itemize}
+    \item $[[Γ; MΓ0 ⊢ Mσ0 : MΓ]]$ and
+    \item $[[Γ; MΓ0 ⊢ [Mσ0]e0 ≡ [Mσ0]e1]]$.
+  \end{itemize}
+
+  The unifier $[[Mσ0]]$ is the most general if 
+  for any other unifier $[[Γ; MΓ1 ⊢ Mσ1 : MΓ]]$ 
+  of $[[e0]]$ and $[[e1]]$,
+  there exists a metasubstitution $[[Γ; MΓ1 ⊢ Mτ : MΓ0]]$
+  such that $[[Γ; MΓ1 ⊢ Mσ1 ≡ Mτ ○ Mσ0]]$.
+\end{definition}
+
+
+\newpage
+
+\appendix
+
+\section{Appendix}
+
+\ottdefnRedRedLabeled{}
+
+\ottdefnWfWFLabeled{}
 
 \end{document}

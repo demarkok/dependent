@@ -14,22 +14,22 @@
 \section{Syntax}
 
   \begin{supertabular}{rll p{0.8\textwidth}}
-    \otte\\
-    \ottA\\
+  \otte\\
+  \ottA\\
   \end{supertabular}
 
 \newpage
 
-\section{Well-formedness}
+\section{Safety}
 
   To formulate the completeness properties (at some point in the future),
   we need to restrict the `implicit' binders $\lambda^{\forall}$ and $\forall$ 
   to bind variables that are at safe positions in the body.
   For this purpose, we define the well-formedness relation.
 
-  Here $V$ is a set of variables, 
-  $sV$ is a set of variables 
-  that need to be in the safe positions.
+  Here $V$ is a set of variables,
+  including normal variables ($\ottmv{x}$) 
+  and safe variables ($\underline{x}$), whose positions are restricted.
   Overall, we wish to guarantee that 
   after normalization,
   substitution of safe variables
@@ -50,12 +50,12 @@
       substitution of safe variables.
   \end{itemize}
 
-    \ottdefnWfWFLabeled{}
+    \ottdefnOkOKLabeled{}
 
   The types are not eliminated, so they behave as 
   constructor forms: they are well-formed by congruence.
 
-    \ottdefnWfTWFLabeled{}
+    \ottdefnOkOKFLabeled{}
 
     The variables are always inert.
     The constructor forms are always inert. 
@@ -65,30 +65,166 @@
     the eliminated component must be either an unsafe variable or 
     another inert eliminator form.
 
-    \ottdefnWfInertLabeled{}
+    \ottdefnOkInertLabeled{}
 \newpage
 
 \section{Reduction}
+  \label{sec:red}
   
   In the reduction, we first reduce the
   components of terms (congruence rules).
   Then, if the outer structure is an eliminator form,
   there are several rules where something interesting happens:
-  \begin{ottdefnblock}[#2]{\ottdefnHeaderRedRed}{}
-    \ottusedrule{\ottdruleRedRedAppLamLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedAppPLamLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLRedSafeLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLRedNeutLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLRedGrLabeled[#1]{}}
-    \ottusedrule{\ottdruleRedRedLNotinLabeled[#1]{}}
+  \begin{ottdefnblock}[]{\ottdefnHeaderRedRed}{}
+    \ottusedrule{\ottdruleRedRedAppLamLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedAppPLamLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLRedSafeLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLRedNeutLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLRedGrLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedLNotinLabeled[]{}}
   \end{ottdefnblock}
   (Here $cE$ is an evaluation context, i.e. a term with a hole 
   in a term position; $cE \, \ottkw{is} \, \ottkw{safe}$ means that the hole is in a safe position)
 
-  The invariant that we are preserving is that 
+  The invariant that we are preserving:
   \begin{itemize}
-    \item reduction does not eliminate metavariables
-    \item reduction preserves safety of the metavariables
+    \item reduction does not eliminate metavariables and the safe variables;
+    \item reduction preserves safety of the metavariables and the safe variables.
   \end{itemize}
+
+
+\subsection{Properties}
+
+\begin{lemma}[Reduction preserves intertness]
+\end{lemma}
+
+
+\begin{lemma}[Reduction preserves safety]
+  If $V  \vdash  e_{{\mathrm{0}}} \, \ottkw{OK}$
+  and $e_{{\mathrm{0}}}  \leadsto  e_{{\mathrm{1}}}$ then 
+  $V  \vdash  e_{{\mathrm{1}}} \, \ottkw{OK}$.
+  If $V  \vdash  A_{{\mathrm{0}}} \, \ottkw{OK}$
+  and $A_{{\mathrm{0}}}  \leadsto  A_{{\mathrm{1}}}$ then
+  $V  \vdash  A_{{\mathrm{1}}} \, \ottkw{OK}$.
+\end{lemma}
+\begin{proof}
+  By induction on the reduction relation.
+  \begin{itemize}
+    \item If the last step of the reduction is a congruence rule
+      on a constructor form
+    (
+      \ruleref{\ottdruleRedRedLamALabel}, 
+      \ruleref{\ottdruleRedRedLameLabel},
+      \ruleref{\ottdruleRedRedPLamALabel},
+      \ruleref{\ottdruleRedRedPLameLabel},
+      \ruleref{\ottdruleRedRedReflLabel}
+    ) 
+    then the safety of the metavariables
+    is proved by the induction hypothesis and the corresponding 
+    safety rule 
+    (\ruleref{\ottdruleOkOKLamLabel}, 
+     \ruleref{\ottdruleOkOKPLamLabel}, or
+     \ruleref{\ottdruleOkOKReflLabel}).
+
+    \item \ruleref{\ottdruleRedRedAppOneLabel}
+    Then our term is the application $p_{{\mathrm{1}}} \, p_{{\mathrm{2}}}$,
+    and its well-formedness is given by one of the two rules:
+    \begin{itemize}
+      \item \ruleref{\ottdruleOkOKAppNoSLabel}
+        Then the well-formedness follows immediately 
+        by the induction hypothesis applied to 
+        $V  \vdash  p_{{\mathrm{1}}} \, \ottkw{OK}$.
+      \item \ruleref{\ottdruleOkOKAppLabel}
+        Then we will also need to prove 
+          $p'_{{\mathrm{1}}} \, p_{{\mathrm{2}}} \, \ottkw{INERT}$,
+    \end{itemize}
+
+  \begin{itemize}
+
+  \end{itemize}
+\end{proof}
+
+\newpage
+
+\section{Normalization}
+
+
+\begin{definition}
+  $e$ is normalized if 
+  there is no $e'$ such that $e  \leadsto  e'$.
+\end{definition}
+
+\begin{definition}
+  $e'$ is a normal form of $e$ if
+  $e  \leadsto^*  e'$ and $e'$ is normalized.
+\end{definition}
+
+
+\section{Well-formedness}
+
+We define well-formedness of types and terms
+in the standard congruent way.
+The interesting part is the base case for the metavariables
+(\ruleref{\ottdruleWfWFAVarLabel}),
+
+  \begin{ottdefnblock}[]{\ottdefnHeaderWfWF}{}
+    \ottusedrule{\ottdruleWfWFVarLabeled[]{}}
+    \ottusedrule{\ottdruleWfWFPLamLabeled[]{}}
+    \ottusedrule{\ottdruleWfWFAVarLabeled[]{}}
+  \end{ottdefnblock}
+
+
+\section{Metavariables and metasubstitution}
+
+\begin{definition}
+  Metasubstitution $M\sigma$
+  is a mapping from metavariables to terms.
+  The  specification 
+  $\Gamma  \mathbin{;}  M\Gamma_{{\mathrm{2}}}  \vdash  M\sigma  \ottsym{:}  M\Gamma_{{\mathrm{1}}}$ states that
+\end{definition}
+
+
+\section{Conversion}
+
+\begin{definition}
+ $\Gamma  \mathbin{;}  M\Gamma  \vdash  e_{{\mathrm{0}}}  \equiv  e_{{\mathrm{1}}}$
+ is defined as alpha-equivalence 
+ transitively closed under reduction. 
+\end{definition}
+
+
+
+\section{Unification}
+
+
+\begin{definition}
+  Suppose that two terms $e_{{\mathrm{0}}}$ and 
+  $e_{{\mathrm{1}}}$ are well-typed in the context $\Gamma$
+  and metacontext $M\Gamma$, i.e., $\Gamma  \mathbin{;}  M\Gamma  \vdash  e_{{\mathrm{0}}}$
+  and $\Gamma  \mathbin{;}  M\Gamma  \vdash  e_{{\mathrm{1}}}$.
+  Then the metasubstitution $M\sigma_{{\mathrm{0}}}$ is a unifier
+  of $e_{{\mathrm{0}}}$ and $e_{{\mathrm{1}}}$ if
+  \begin{itemize}
+    \item $\Gamma  \mathbin{;}  M\Gamma_{{\mathrm{0}}}  \vdash  M\sigma_{{\mathrm{0}}}  \ottsym{:}  M\Gamma$ and
+    \item $\Gamma  \mathbin{;}  M\Gamma_{{\mathrm{0}}}  \vdash  \ottsym{[}  M\sigma_{{\mathrm{0}}}  \ottsym{]}  e_{{\mathrm{0}}}  \equiv  \ottsym{[}  M\sigma_{{\mathrm{0}}}  \ottsym{]}  e_{{\mathrm{1}}}$.
+  \end{itemize}
+
+  The unifier $M\sigma_{{\mathrm{0}}}$ is the most general if 
+  for any other unifier $\Gamma  \mathbin{;}  M\Gamma_{{\mathrm{1}}}  \vdash  M\sigma_{{\mathrm{1}}}  \ottsym{:}  M\Gamma$ 
+  of $e_{{\mathrm{0}}}$ and $e_{{\mathrm{1}}}$,
+  there exists a metasubstitution $\Gamma  \mathbin{;}  M\Gamma_{{\mathrm{1}}}  \vdash  M\tau  \ottsym{:}  M\Gamma_{{\mathrm{0}}}$
+  such that $\ottsym{Γ;}  M\Gamma_{{\mathrm{1}}}  \vdash  M\sigma_{{\mathrm{1}}}  \equiv  M\tau  \circ  M\sigma_{{\mathrm{0}}}$.
+\end{definition}
+
+
+\newpage
+
+\appendix
+
+\section{Appendix}
+
+\ottdefnRedRedLabeled{}
+
+\ottdefnWfWFLabeled{}
 
 \end{document}

@@ -1,0 +1,5 @@
+defns
+  Unif :: 'Unif' ::=
+
+  defn Γ ; MΓ ⊢ e1 ≡ e2 ⊣ MΓ'; Ms :: :: Unif :: 'Unif' by
+    

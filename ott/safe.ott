@@ -1,0 +1,165 @@
+defns
+  Ok :: 'Ok' ::=
+
+  defn Vars ⊢ e OK :: :: OK :: 'OK' by
+
+% Variables
+
+    varx ∊ Vars
+    ------------------- :: Var
+    Vars ⊢ varx OK
+
+
+    ------------------------ :: MVar
+    Vars ⊢ ax[σ]  OK 
+
+% Constructors
+
+    --------------- :: Unit
+    Vars ⊢ <> OK 
+
+    Vars ⊢ A OK     Vars, x ⊢ e OK 
+    ------------------------------------- :: Lam
+    Vars ⊢ λx:A.e OK
+
+    Vars ⊢ A OK     Vars, sx ⊢ e OK 
+    ------------------------------- :: PLam
+    Vars ⊢ λ̂sx:A.e OK
+
+    Vars ⊢ e OK 
+    ------------------------ :: Refl
+    Vars ⊢ refl e OK
+
+% Eliminators
+
+    e1, e2 are ground
+    Vars ⊢ e1 OK    Vars ⊢ e2 OK
+    ----------------------------- :: AppNoS
+    Vars ⊢ e1 e2 OK
+
+
+    Vars ⊢ e1 OK    Vars ⊢ e2 OK     (e1 e2) INERT 
+    --------------------------------------------------------------------- :: App
+    Vars ⊢ e1 e2 OK
+
+
+    Vars ⊢ e1 OK   Vars ⊢ e2 OK   Vars ⊢ p OK   Vars ⊢ e OK
+    Vars ⊢ A OK    Vars, x ⊢ B OK
+    e1, e2, p, e, A, B are ground
+    --------------------------------------------------------------------- :: SubstNoS
+    Vars ⊢ subst(p:e1=e2:A, x.B, e) OK
+
+
+    Vars ⊢ e1 OK   Vars ⊢ e2 OK   Vars ⊢ p OK   Vars ⊢ e OK
+    Vars ⊢ A OK    Vars, x ⊢ B OK
+    subst(p:e1=e2:A, x.B, e) INERT
+    -------------------------------------------------- :: Subst
+    Vars ⊢ subst(p:e1=e2:A, x.B, e) OK
+
+    Vars ⊢ e1 OK   Vars ⊢ A OK  
+    Vars, varx ⊢ e2 OK
+    ---------------------------------------------- :: LetNoS
+    Vars ⊢ let varx : A = e1 in e2 OK
+
+  defn Vars ⊢ A OK :: :: TOK :: 'TOK' by
+
+    --------------------- :: Unit
+    Vars ⊢ Unit OK
+
+
+    Vars ⊢ A OK    Vars, x ⊢ B OK
+    ------------------------------------------- :: Pi
+    Vars ⊢ Πx:A.B OK
+
+
+    Vars ⊢ A OK    Vars, sx ⊢ B OK
+    ------------------------------ :: Forall
+    Vars ⊢ ∀sx:A.B OK
+
+
+    Vars ⊢ A OK    Vars ⊢ e1 OK    Vars ⊢ e2 OK
+    ----------------------------------------------------------------- :: Eq
+    Vars ⊢ e1 = e2 : A OK
+
+    Vars ⊢ A OK    Vars ⊢ e OK 
+    Vars, x ⊢ B OK
+    ------------------------------------------ :: Let
+    Vars ⊢ let x:A = e in B OK
+
+  defn e INERT :: :: Inert :: 'Inert' by
+
+% Variables
+
+    ------- :: Var
+    x INERT
+
+    ------- :: SVar
+    sx INERT
+
+% Constructors
+
+    -------- :: Unit
+    <> INERT
+
+    --------------------- :: Lam
+    λx:A.e INERT
+
+    ------------- :: PLam
+    λ̂sx:A.e INERT
+
+    ------------ :: Refl 
+    refl e INERT
+
+% Eliminators
+
+    --------- :: AppVar
+    x e INERT 
+
+    e1 e2 INERT 
+    ---------------- :: AppApp 
+    (e1 e2) e3 INERT 
+    
+    subst(p:e1=e2:A, x.B, e) INERT 
+    ----------------------------------- :: AppSubst
+    (subst(p:e1=e2:A, x.B, e)) e3 INERT 
+
+    ------------------------------ :: SubstVar
+    subst(y:e1=e2:A, x.B, e) INERT 
+
+
+    e3 e4 INERT
+    ------------------------------------ :: SubstApp
+    subst((e3 e4):e1=e2:A, x.B, e) INERT 
+
+
+    subst(p:e0=e1:A0, x.B0, e2) INERT
+    ------------------------------------------------------------ :: SubstSubst
+    subst(subst(p:e0=e1:A0, x.B0, e2):e3=e4:A1, y.B1, e5) INERT 
+
+  defn ce OK :: :: ceOk :: 'ceOk' by
+
+
+  % ----- :: Place
+  % ● OK
+
+  % cA OK
+  % --------------- :: LamA
+  % λx:cA.e OK
+
+
+  % ce OK
+  % ----------- :: LamE
+  % λx:A.ce OK
+
+
+  % ce1 e2 INERT
+  % -----------
+  % ce1  e2 OK
+
+
+
+
+
+
+
+
