@@ -192,9 +192,14 @@ fun
   [ Mσ ] e' :: e :: Msubst
 by 
 
-% fun 
-%   [ e2 / x ] e1  :: e :: tsubst 
-% by
+
+fun 
+  [ e2 / x ] e1  :: e :: tsubst 
+by
+
+fun 
+  [ e2 / sx ] e1  :: e :: tssubst 
+by
 
 
 % fun 

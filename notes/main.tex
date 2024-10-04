@@ -48,6 +48,10 @@
     \item they are \emph{inert} (see below), which implies that 
       their outer structure withstands reduction and 
       substitution of safe variables.
+    \item they are reducible but the reduction preserves safety:
+      it does not eliminate metavariables, and if the substitution happens, 
+      the variables we are substituting are at safe positions 
+      and the terms we are substituting for are safe.
   \end{itemize}
 
     \ottdefnOkOKLabeled{}
@@ -59,34 +63,31 @@
 
     The variables are always inert.
     The constructor forms are always inert. 
-    The eliminator forms forbid their eliminated component to be a safe variable
-    or a constructor form, and require it to be inert. 
-    This way, if we assume that the term is well-typed, 
-    the eliminated component must be either an unsafe variable or 
-    another inert eliminator form.
 
+    Inert term preserve their outer structure under reduction 
+    and substitution of safe variables. 
+    Neutrally inert term, in addition, cannot be reduced when
+    put in a redex position.
+
+    \ottdefnOkNeuInertLabeled{}
     \ottdefnOkInertLabeled{}
 \newpage
 
 \section{Reduction}
   \label{sec:red}
   
-  In the reduction, we first reduce the
-  components of terms (congruence rules).
-  Then, if the outer structure is an eliminator form,
-  there are several rules where something interesting happens:
+  The reduction is defined in a standard way:
+  we first reduce the components of terms (congruence rules),
+  then we eliminate the redexes by the following rules.
   \begin{ottdefnblock}[]{\ottdefnHeaderRedRed}{}
     \ottusedrule{\ottdruleRedRedAppLamLabeled[]{}}
     \ottusedrule{\ottdruleRedRedAppPLamLabeled[]{}}
-    \ottusedrule{\ottdruleRedRedLRedSafeLabeled[]{}}
-    \ottusedrule{\ottdruleRedRedLRedNeutLabeled[]{}}
-    \ottusedrule{\ottdruleRedRedLRedGrLabeled[]{}}
-    \ottusedrule{\ottdruleRedRedLNotinLabeled[]{}}
+    \ottusedrule{\ottdruleRedRedSubstRedLabeled[]{}}
   \end{ottdefnblock}
-  (Here $[[ce]]$ is an evaluation context, i.e. a term with a hole 
-  in a term position; $[[ce is safe]]$ means that the hole is in a safe position)
+  % (Here $[[ce]]$ is an evaluation context, i.e. a term with a hole 
+  % in a term position; $[[ce is safe]]$ means that the hole is in a safe position)
 
-  The invariant that we are preserving:
+  The invariants that we are preserving:
   \begin{itemize}
     \item reduction does not eliminate metavariables and the safe variables;
     \item reduction preserves safety of the metavariables and the safe variables.
@@ -98,6 +99,11 @@
 \begin{lemma}[Reduction preserves intertness]
 \end{lemma}
 
+\begin{lemma}[Safety is preserved when a safe term plugs into a safe position]
+\end{lemma}
+
+\begin{lemma}[Safety is preserved when a safe and neutrally inert term plugs into any position]
+\end{lemma}
 
 \begin{lemma}[Reduction preserves safety]
   If $[[Vars ⊢ e0 OK ]]$
@@ -148,7 +154,6 @@
 
 \section{Normalization}
 
-
 \begin{definition}
   $[[e]]$ is normalized if 
   there is no $[[e']]$ such that $[[e ⤳ e']]$.
@@ -159,6 +164,7 @@
   $[[e ⤳* e']]$ and $[[e']]$ is normalized.
 \end{definition}
 
+\ottdefnRedNeutLabeled{}
 
 \section{Well-formedness}
 

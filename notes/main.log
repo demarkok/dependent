@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.1)  24 SEP 2024 13:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.1)  4 OCT 2024 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1433,28 +1433,10 @@ LaTeX Warning: Label `RedRedAppPLam' multiply defined.
 LaTeX Warning: Label `RedRedAppPLam@cref' multiply defined.
 
 
-LaTeX Warning: Label `RedRedLRedSafe' multiply defined.
+LaTeX Warning: Label `RedRedSubstRed' multiply defined.
 
 
-LaTeX Warning: Label `RedRedLRedSafe@cref' multiply defined.
-
-
-LaTeX Warning: Label `RedRedLRedNeut' multiply defined.
-
-
-LaTeX Warning: Label `RedRedLRedNeut@cref' multiply defined.
-
-
-LaTeX Warning: Label `RedRedLRedGr' multiply defined.
-
-
-LaTeX Warning: Label `RedRedLRedGr@cref' multiply defined.
-
-
-LaTeX Warning: Label `RedRedLNotin' multiply defined.
-
-
-LaTeX Warning: Label `RedRedLNotin@cref' multiply defined.
+LaTeX Warning: Label `RedRedSubstRed@cref' multiply defined.
 
 
 LaTeX Warning: Label `WfWFVar' multiply defined.
@@ -1970,65 +1952,73 @@ al/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 48.
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--53
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
 
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 53.
+(Font)              scaled to size 10.0pt on input line 57.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 57.
 
 
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 53.
+(Font)              scaled to size 8.0pt on input line 57.
 [2.2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.e
 nc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.en
 c}]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 53.
+surrounding objects on input line 57.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 57.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 57.
 
 ! Undefined control sequence.
-l.58     \ottdefnOkOKFLabeled
+l.62     \ottdefnOkOKFLabeled
                              {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2037,64 +2027,53 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--68
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
 
  []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 72.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 72.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 72.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 73.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 73.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 73.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 73.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 68.
+surrounding objects on input line 73.
 
 
 
 ! Undefined control sequence.
 \f@nch@olh ...necountL \@headfootfont \shorttitle 
                                                   \strut 
-l.69 \newpage
+l.74 \newpage
              
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2103,25 +2082,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [3.3]
-Underfull \hbox (badness 10000) in paragraph at lines 74--79
+Underfull \hbox (badness 10000) in paragraph at lines 79--83
 
  []
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 79.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 80.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 81.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 82.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
@@ -2131,10 +2094,64 @@ surrounding objects on input line 83.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 84.
 
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 85.
+
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 98.
+(Font)              scaled to size 10.0pt on input line 99.
 Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 98.
+line 99.
+! Undefined control sequence.
+<argument> \ottdruleOkOKAppNoSLabel 
+                                    
+l.139 ... \item \ruleref{\ottdruleOkOKAppNoSLabel}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<write> ...g: Reference `\ottdruleOkOKAppNoSLabel 
+                                                  ' on page \thepage \space ...
+l.139 ... \item \ruleref{\ottdruleOkOKAppNoSLabel}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `' on page 4 undefined on input line 139.
+
+! Undefined control sequence.
+<argument> \ottdruleOkOKAppLabel 
+                                 
+l.143       \item \ruleref{\ottdruleOkOKAppLabel}
+                                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<write> ...ning: Reference `\ottdruleOkOKAppLabel 
+                                                  ' on page \thepage \space ...
+l.143       \item \ruleref{\ottdruleOkOKAppLabel}
+                                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `' on page 4 undefined on input line 143.
+
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -2142,19 +2159,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.144   \end{itemize}
+l.150   \end{itemize}
                      
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-! LaTeX Error: \begin{itemize} on input line 112 ended by \end{proof}.
+! LaTeX Error: \begin{itemize} on input line 118 ended by \end{proof}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.145 \end{proof}
+l.151 \end{proof}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -2165,23 +2182,44 @@ or  <return>  to continue without it.
 [4.4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.e
 nc}]
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 153.
+nput line 158.
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
 
  []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 171.
+surrounding objects on input line 167.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 172.
+surrounding objects on input line 167.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 173.
+surrounding objects on input line 167.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 167.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
+
+ []
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 177.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 178.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 179.
 
 
 ! LaTeX Error: Unicode character Γ (U+0393)
@@ -2191,7 +2229,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.216   such that $\ottsym{Γ;}
+l.222   such that $\ottsym{Γ;}
                                  M\Gamma_{{\mathrm{1}}}  \vdash  M\sigma_{{\...
 
 You may provide a definition with
@@ -2202,7 +2240,7 @@ You may provide a definition with
 ! Undefined control sequence.
 \f@nch@olh ...necountL \@headfootfont \shorttitle 
                                                   \strut 
-l.220 \newpage
+l.226 \newpage
               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2211,163 +2249,121 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [5.5]
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 
  []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 232.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--234
+
+ []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 234.
 
 
 
 [6.6]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 226.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
-
- []
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
-
-
-
-! Undefined control sequence.
-\f@nch@olh ...necountL \@headfootfont \shorttitle 
-                                                  \strut 
-l.228 \ottdefnWfWFLabeled{}
-                           
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[7.7]
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 228.
+surrounding objects on input line 234.
 
 
 Class acmart Warning: ACM keywords are mandatory for papers over two pages.
@@ -2377,20 +2373,31 @@ Class acmart Warning: CCS concepts are mandatory for papers over two pages.
 
 
 
+! Undefined control sequence.
+\f@nch@olh ...necountL \@headfootfont \shorttitle 
+                                                  \strut 
+l.236 \end{document}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 )
 (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/se-utf8.def
 File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
-) [8.8]
+) [7.7]
 
-! LaTeX Error: \begin{proof} on input line 110 ended by \end{document}.
+! LaTeX Error: \begin{proof} on input line 116 ended by \end{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.230 \end{document}
+l.236 \end{document}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -2403,6 +2410,9 @@ L3 programming layer <2020/03/25>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
@@ -2410,14 +2420,14 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 110 (\begingroup)
+### semi simple group (level 1) entered at line 116 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 40642 strings out of 473584
- 774670 string characters out of 5728329
- 1951905 words of memory out of 5000000
- 62326 multiletter control sequences out of 15000+600000
- 678083 words of font info for 238 fonts, out of 8000000 for 9000
+ 40718 strings out of 473584
+ 776618 string characters out of 5728329
+ 1950905 words of memory out of 5000000
+ 62410 multiletter control sequences out of 15000+600000
+ 677810 words of font info for 236 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  108i,17n,134p,1732b,768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/Li
@@ -2435,10 +2445,10 @@ ts/type1/public/newtx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
 /txfonts/txsyc.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx
 /txsym.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.p
 fb>
-Output written on main.pdf (8 pages, 494321 bytes).
+Output written on main.pdf (7 pages, 492884 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
- 98 named destinations out of 1000 (max. 500000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 93 named destinations out of 1000 (max. 500000)
  69741 words of extra memory for PDF output out of 74296 (max. 10000000)
 

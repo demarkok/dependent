@@ -6,7 +6,6 @@ defns
 
   % Variables
 
-
     A0 ⤳ A1  
     ------------------ :: LamA
     λx:A0.e ⤳ λx:A1.e
@@ -39,91 +38,180 @@ defns
     ------------------- :: App1
     e0 e ⤳ e1 e
 
+    % -------------------------------- :: AppLam
+    % (λx:A.e0) e ⤳ let x:A = e in e0
 
-    -------------------------------- :: AppLam
-    (λx:A.e0) e ⤳ let x:A = e in e0
+    --------------------- :: AppLam
+    (λx:A.e0) e ⤳ [e/x]e0
+
+    % ---------------------------------------- :: AppPLam
+    % (λ̂sx:A.e0){e} ⤳ let sx:A = e in e0
 
 
-    ---------------------------------------- :: AppPLam
-    (λ̂sx:A.e0){e} ⤳ let sx:A = e in e0
-
+    ------------------------ :: AppPLam
+    (λ̂sx:A.e0){e} ⤳ [e/sx]e0
 
     p0 ⤳ p1
     ---------------------------------------------------- :: SubstP
     subst(p0:e1=e2:A, x.B, e) ⤳ subst(p1:e1=e2:A, x.B, e)
 
-
     e0 ⤳ e1
     --------------------------------------------------- :: SubstE1
     subst(p:e0=e2:A, x.B, e) ⤳ subst(p:e1=e2:A, x.B, e)
-
 
     e0 ⤳ e2
     --------------------------------------------------- :: SubstE2
     subst(p:e1=e0:A, x.B, e) ⤳ subst(p:e1=e2:A, x.B, e)
 
-
     A0 ⤳ A
     --------------------------------------------------- :: SubstA
     subst(p:e1=e2:A0, x.B, e) ⤳ subst(p:e1=e2:A, x.B, e)
-
 
     B0 ⤳ B
     --------------------------------------------------- :: SubstB
     subst(p:e1=e2:A, x.B0, e) ⤳ subst(p:e1=e2:A, x.B, e)
 
-
     e0 ⤳ e
     --------------------------------------------------- :: SubstE
     subst(p:e1=e2:A, x.B, e0) ⤳ subst(p:e1=e2:A, x.B, e)
 
-
-    e0, e2, e2, A, B are ground
     ------------------------------------- :: SubstRed
     subst((refl e0):e1=e2:A, x.B, e) ⤳ e
     
-
-    A0 ⤳ A  
-    ----------------------------------------- :: LetA
-    let varx:A0 = e in e0 ⤳ let varx:A = e in e0
-
-
-    e0 ⤳ e1
-    -------------------------------------- :: LetE1
-    let varx:A = e0 in e ⤳ let varx:A = e1 in e2
+    % A0 ⤳ A  
+    % ----------------------------------------- :: LetA
+    % let varx:A0 = e in e0 ⤳ let varx:A = e in e0
 
 
-    e0 ⤳ e2
-    ----------------------------------------- :: LetE2
-    let varx:A = e in e0  ⤳ let varx:A = e1 in e2
+    % e0 ⤳ e1
+    % -------------------------------------- :: LetE1
+    % let varx:A = e0 in e ⤳ let varx:A = e1 in e2
 
 
-    ce is safe
-    ------------------------------------------ :: LRedSafe
-    let varx:A = e in ce[varx] ⤳ let varx:A = e in ce[e]
+    % e0 ⤳ e2
+    % ----------------------------------------- :: LetE2
+    % let varx:A = e in e0  ⤳ let varx:A = e1 in e2
 
 
-    e is neutral
-    ------------------------------------------ :: LRedNeut
-    let varx:A = e in ce[varx]  ⤳ let varx:A = e in ce[e]
+    % ce is safe
+    % --------------------------------------------------- :: LRedSafe
+    % let varx:A = e in ce[varx] ⤳ let varx:A = e in ce[e]
 
 
-    e is ground
-    ------------------------------------------ :: LRedGr
-    let varx:A = e in ce[varx]  ⤳ let varx:A = e in ce[e]
+    % e is neutral
+    % ---------------------------------------------------- :: LRedNeut
+    % let varx:A = e in ce[varx]  ⤳ let varx:A = e in ce[e]
 
 
-    varx ∉ fv e2    A, e1 are ground
-    ------------------------------------- :: LNotin
-    let varx:A = e1 in e2  ⤳ e2
+    % e is ground
+    % ------------------------------------------ :: LRedGr
+    % let varx:A = e in ce[varx]  ⤳ let varx:A = e in ce[e]
+
+    % varx ∉ fv e2    A, e1 are ground
+    % ------------------------------------- :: LNotin
+    % let varx:A = e1 in e2 ⤳ e2
 
   defn A1 ⤳ A2 :: :: TRed :: 'TRed' by
 
+    A1 ⤳ A2
+    ------------------ :: PiA
+    Πx:A1.B ⤳ Πx:A2.B
+
+    B1 ⤳ B2
+    ------------------ :: PiB
+    Πx:A.B1 ⤳ Πx:A.B2
+
+    A1 ⤳ A2
+    ------------------ :: ForallA
+    ∀sx:A1.B ⤳ ∀sx:A2.B
+
+    B1 ⤳ B2
+    ------------------ :: ForallB
+    ∀sx:A.B1 ⤳ ∀sx:A.B2
+
+    e1 ⤳ e1'
+    --------------------------- :: EqE1
+    e1 = e2 : A ⤳ e1' = e2 : A
+
+    e2 ⤳ e2'
+    --------------------------- :: EqE2
+    e1 = e2 : A ⤳ e1 = e2' : A
+
+    A1 ⤳ A2
+    --------------------------- :: EqA
+    e1 = e2 : A1 ⤳ e1 = e2 : A2
+
   defn e is neutral :: :: Neut :: 'Neut' by
+
+    ------------ :: Var
+    x is neutral 
+
+    e1 is neutral   e2 is normal
+    -----------------------------  :: App
+    e1 e2 is neutral
+
+    e1 is neutral   e2 is normal
+    ----------------------------- :: PApp
+    e1 { e2 } is neutral
+
+    p is neutral  e1, e2, A, B, e are normal
+    ------------------------------------ :: Subst
+    subst(p:e1=e2:A, x.B, e) is neutral
+
+    % A, e1, e2 are normal   e1 is not neutral   varx ∊ fv e2
+    % all the occurrences of varx in e2 are unsafe
+    % --------------------------------------------- :: Let
+    % let varx:A = e1 in e2 is neutral
+
+  defn e is normal :: :: Norm :: 'Norm' by
+
+    e is neutral
+    ------------ :: Neut
+    e is normal
+
+    A is normal   e is normal
+    -------------------------- :: Lam
+    λx:A.e is normal
+
+    A is normal   e is normal
+    ---------------------------- :: PLam
+    λ̂sx:A.e is normal
+
+    e is normal 
+    ---------------- :: Refl
+    refl e is normal
+
+    ----------------- :: Unit
+    <> is normal
+
+  defn A is normal :: :: TNorm :: 'TNorm' by
+
+    --------------- :: Unit
+    Unit is normal
+
+    A is normal   B is normal
+    ------------------------- :: Pi
+    Πx:A.B is normal
+
+    A is normal   B is normal
+    ------------------------- :: Forall
+    ∀sx:A.B is normal
+
+    A is normal   e1 is normal   e2 is normal
+    ---------------------------------------- :: Eq
+    e1 = e2 : A is normal
+
+  defn all the occurrences of varx in e are unsafe :: :: AllUnsafe :: 'AllU' by
+
+  defn e is not neutral :: :: NotNeut :: 'NotNeut' by
+
+  defn eAList are normal :: :: eANorm :: 'eANorm' by
 
   defn eAList are ground :: :: eAGround :: 'eAGr' by
 
   defn e is ground :: :: eGround :: 'eGr' by
+
+  defn A is ground :: :: TGround :: 'eGr' by
 
   defn ce is safe :: :: ceSafe :: 'ceS' by
 
